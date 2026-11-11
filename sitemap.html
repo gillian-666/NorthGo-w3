@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Northgo 網站地圖 | Sitemap</title>
+  <meta name="description" content="Northgo 官方網站結構地圖，可依語系切換對應內容。" />
+  <link rel="icon" href="brand/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="brand/webclip.jpg" />
+  <style>
+    :root {
+      --navy: #062445;
+      --navy-deep: #04182f;
+      --cyan: #2ad4e8;
+      --cyan-dim: rgba(42, 212, 232, 0.16);
+      --text: #f4fbff;
+      --muted: #b7c9d8;
+      --card: rgba(255, 255, 255, 0.06);
+      --line: rgba(42, 212, 232, 0.28);
+      --warn: #f4c95d;
+      --ok: #6ee7b7;
+      --shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", "Hiragino Sans", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 500px at 10% -10%, rgba(42, 212, 232, 0.18), transparent 50%),
+        linear-gradient(180deg, var(--navy-deep), var(--navy) 32%, #08305a);
+      min-height: 100vh;
+      line-height: 1.55;
+    }
+
+    a { color: var(--cyan); text-decoration: none; }
+    a:hover, a:focus-visible { text-decoration: underline; outline: none; }
+
+    .wrap { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+    header.hero { padding: 28px 0 8px; }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .brand-logo {
+      height: 28px;
+      width: auto;
+      display: block;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .lang-switch {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 4px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.18);
+    }
+
+    .lang-switch button {
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      padding: 8px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      font: inherit;
+      font-size: 0.88rem;
+    }
+
+    .lang-switch button[aria-pressed="true"] {
+      background: var(--cyan-dim);
+      color: var(--cyan);
+      font-weight: 700;
+    }
+
+    .lang-switch button:focus-visible {
+      outline: 2px solid var(--cyan);
+      outline-offset: 2px;
+    }
+
+    .alt-link {
+      color: var(--text);
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 0.88rem;
+    }
+
+    nav.jump { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+    nav.jump a {
+      color: var(--text);
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 0.92rem;
+      text-decoration: none;
+    }
+    nav.jump a:hover, nav.jump a:focus-visible { background: var(--cyan-dim); }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      line-height: 1.12;
+      margin: 28px 0 12px;
+    }
+    h1 span { color: var(--cyan); }
+    .lede { max-width: 70ch; color: var(--muted); font-size: 1.05rem; }
+
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin: 28px 0 8px;
+    }
+    .stat {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      box-shadow: var(--shadow);
+    }
+    .stat b { display: block; font-size: 1.6rem; color: var(--cyan); }
+    .stat span { color: var(--muted); font-size: 0.92rem; }
+
+    .note {
+      margin: 18px 0 0;
+      padding: 14px 16px;
+      border-left: 3px solid var(--warn);
+      background: rgba(244, 201, 93, 0.08);
+      border-radius: 0 12px 12px 0;
+      color: #f8e7b8;
+      font-size: 0.95rem;
+    }
+
+    section { padding: 28px 0; }
+    h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); margin: 0 0 16px; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    article.card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+    article.card h3 { margin: 0 0 8px; font-size: 1.15rem; }
+
+    .path {
+      display: inline-block;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.82rem;
+      color: var(--muted);
+      background: rgba(0, 0, 0, 0.22);
+      padding: 3px 8px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      word-break: break-all;
+    }
+
+    ul.tree { margin: 10px 0 0; padding: 0 0 0 18px; }
+    ul.tree li { margin: 6px 0; }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 999px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+    .tag.live { background: rgba(110, 231, 183, 0.16); color: var(--ok); }
+    .tag.anchor { background: var(--cyan-dim); color: var(--cyan); }
+    .tag.missing { background: rgba(244, 201, 93, 0.16); color: var(--warn); }
+
+    .offices {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .office {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+    }
+    .office h4 { margin: 0 0 6px; }
+    .office p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+
+    .flow { overflow-x: auto; padding-bottom: 8px; -webkit-overflow-scrolling: touch; }
+    .flow svg { width: 100%; min-width: 760px; height: auto; }
+
+    footer {
+      padding: 24px 0 40px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      margin-top: 8px;
+    }
+
+    @media (max-width: 900px) {
+      .meta { grid-template-columns: repeat(2, 1fr); }
+      .grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .wrap { width: min(1180px, calc(100% - 20px)); }
+      .meta { grid-template-columns: 1fr; }
+      nav.jump a, .alt-link { width: 100%; text-align: center; }
+      .lang-switch { width: 100%; justify-content: stretch; }
+      .lang-switch button { flex: 1 1 auto; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <div class="topbar">
+        <div class="brand">
+          <img class="brand-logo" src="brand/logo-teal-blue.svg" alt="Northgo" width="160" height="31" />
+          <span data-i18n="brand">Northgo Sitemap</span>
+        </div>
+        <div class="controls">
+          <div class="lang-switch" role="group" aria-label="Language">
+            <button type="button" data-lang="en" aria-pressed="false">EN</button>
+            <button type="button" data-lang="zh-tw" aria-pressed="true">繁中</button>
+            <button type="button" data-lang="ja" aria-pressed="false">日本語</button>
+            <button type="button" data-lang="vi" aria-pressed="false">VI</button>
+          </div>
+          <a class="alt-link" href="sitemap-tree.html" data-i18n="treeLink">樹狀精簡版</a>
+          <a class="alt-link" href="locations-map.html" data-i18n="mapLink">據點地圖</a>
+        </div>
+      </div>
+      <nav class="jump" aria-label="Sections">
+        <a href="#structure" data-i18n="navStructure">結構圖</a>
+        <a href="#pages" data-i18n="navPages">頁面清單</a>
+        <a href="#offices" data-i18n="navOffices">據點</a>
+      </nav>
+      <h1 data-i18n-html="title">讓網站結構也變得<span>清楚可見</span>。</h1>
+      <p class="lede" data-i18n-html="lede"></p>
+      <div class="meta">
+        <div class="stat"><b>11</b><span data-i18n="statPages">已確認頁面</span></div>
+        <div class="stat"><b>4</b><span data-i18n="statLocales">語系</span></div>
+        <div class="stat"><b>4</b><span data-i18n="statServices">核心服務頁</span></div>
+        <div class="stat"><b>7</b><span data-i18n="statOffices">全球辦公室（同頁）</span></div>
+      </div>
+      <p class="note" data-i18n-html="note"></p>
+    </div>
+  </header>
+
+  <main>
+    <section id="structure">
+      <div class="wrap">
+        <h2 data-i18n="structureTitle">資訊架構</h2>
+        <div class="flow" id="ia-diagram" role="img"></div>
+      </div>
+    </section>
+
+    <section id="pages">
+      <div class="wrap">
+        <h2 data-i18n="pagesTitle">頁面清單</h2>
+        <div class="grid" id="pages-grid"></div>
+      </div>
+    </section>
+
+    <section id="offices">
+      <div class="wrap">
+        <h2 data-i18n="officesTitle">聯絡頁據點（同頁內容）</h2>
+        <div class="offices" id="offices-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span data-i18n="footer">分析日期：2026-11-11 · 來源：northgo.com</span>
+      · <a id="site-home" href="https://www.northgo.com/" target="_blank" rel="noopener" data-i18n="backHome">返回官網</a>
+    </div>
+  </footer>
+
+  <script>
+    const BASE = "https://www.northgo.com";
+
+    const I18N = {
+      en: {
+        htmlLang: "en",
+        brand: "Northgo Sitemap",
+        treeLink: "Tree version",
+        mapLink: "Offices map",
+        navStructure: "Structure",
+        navPages: "Pages",
+        navOffices: "Offices",
+        title: 'Make the site structure <span>clearly visible</span>.',
+        lede: 'Based on current navigation, footer and live pages of <a href="https://www.northgo.com/" target="_blank" rel="noopener">www.northgo.com</a>. Links below switch to the <strong>English</strong> path set. Official <code>/sitemap.xml</code> returns 404.',
+        note: 'Footer still links to <code>/news</code> (404, unpublished). Social icons currently point to <code>#</code>.',
+        statPages: "Confirmed pages",
+        statLocales: "Languages",
+        statServices: "Core service pages",
+        statOffices: "Global offices (same page)",
+        structureTitle: "Information architecture",
+        pagesTitle: "Page list",
+        officesTitle: "Offices on Contact page",
+        footer: "Analyzed: 2026-11-11 · Source: northgo.com",
+        backHome: "Back to site",
+        live: "Live",
+        missing: "404",
+        anchor: "Anchor",
+        inpage: "In-page",
+        labels: {
+          home: "Home",
+          why: "Why Northgo",
+          about: "About",
+          contact: "Contact",
+          locations: "Locations",
+          news: "News",
+          services: "Services",
+          freight: "Freight Logistics",
+          project: "Project Logistics",
+          warehouse: "Warehouse Logistics",
+          shipping: "Shipping Agency",
+          ocean: "Ocean Freight",
+          air: "Air Freight",
+          land: "Land Transport",
+          customs: "Customs Clearance",
+          legal: "Legal",
+          privacy: "Privacy Policy",
+          terms: "Terms of Service",
+          cookie: "Cookie Policy",
+          disclaimer: "Legal Disclaimer",
+          enquire: "Enquire now",
+          external: "External / placeholders"
+        },
+        desc: {
+          home: "Brand promise “Making logistics effortless.” with four service entries and Why Northgo.",
+          about: "Vision, mission, values and brand story (1988 Max Seair → 2024 Northgo).",
+          freight: "Standalone page; sub-items are in-page sections, not separate URLs.",
+          project: "Complex / oversized project cargo logistics.",
+          warehouse: "Taichung Port warehouse, WMS, value-added and offshore wind storage.",
+          shipping: "Port agency and marine services on one page.",
+          contact: "Footer “Locations” also points here; no separate /locations.",
+          news: "Linked in footer but returns Not Found.",
+          legal: "Policy pages in the footer.",
+          external: "Agency credit and social placeholders."
+        },
+        ia: ["Why Northgo", "Services", "About", "Contact", "News (404)", "Legal", "Locales"],
+        offices: [
+          { name: "Taipei (HQ)", detail: "7F., No. 10, Sec. 3, Minsheng E. Rd.<br>Tel +886-2-2531-8677<br>info.tpe@northgo.com" },
+          { name: "Taichung", detail: "Tel +886-4-2326-2580<br>info.txg@northgo.com" },
+          { name: "Kaohsiung", detail: "Tel +886-7-335-0730<br>info.khh@northgo.com" },
+          { name: "Los Angeles", detail: "Tel +1-714-853-1088<br>info.lax@northgo.com" },
+          { name: "Ho Chi Minh", detail: "Tel +84-28-9995-7368<br>info.hcmc@northgo.com" },
+          { name: "Tokyo", detail: "Tel +81-3-6260-3944<br>info.tyo@northgo.com" },
+          { name: "Osaka", detail: "Tel +81-6-6676-8395<br>info.osa@northgo.com" }
+        ]
+      },
+      "zh-tw": {
+        htmlLang: "zh-Hant",
+        brand: "Northgo 網站地圖",
+        treeLink: "樹狀精簡版",
+        mapLink: "據點地圖",
+        navStructure: "結構圖",
+        navPages: "頁面清單",
+        navOffices: "據點",
+        title: '讓網站結構也變得<span>清楚可見</span>。',
+        lede: '依 <a href="https://www.northgo.com/zh-tw" target="_blank" rel="noopener">www.northgo.com/zh-tw</a> 導覽、頁尾與實際可開啟頁面整理。下方連結會切換至<strong>繁體中文</strong>路徑。官網 <code>/sitemap.xml</code> 回傳 404。',
+        note: '頁尾仍有 <code>/zh-tw/news</code> 連結（實際 404，尚未發布）。社群圖示目前指向 <code>#</code>。',
+        statPages: "已確認頁面",
+        statLocales: "語系",
+        statServices: "核心服務頁",
+        statOffices: "全球辦公室（同頁）",
+        structureTitle: "資訊架構",
+        pagesTitle: "頁面清單",
+        officesTitle: "聯絡頁據點（同頁內容）",
+        footer: "分析日期：2026-11-11 · 來源：northgo.com",
+        backHome: "返回官網",
+        live: "上線",
+        missing: "404",
+        anchor: "錨點",
+        inpage: "同頁",
+        labels: {
+          home: "首頁",
+          why: "為何選擇 Northgo",
+          about: "關於我們",
+          contact: "聯絡我們",
+          locations: "據點",
+          news: "最新消息",
+          services: "服務",
+          freight: "貨運物流",
+          project: "專案物流",
+          warehouse: "倉儲物流",
+          shipping: "船務代理",
+          ocean: "海運",
+          air: "空運",
+          land: "陸運",
+          customs: "報關",
+          legal: "法律條款",
+          privacy: "隱私權政策",
+          terms: "服務條款",
+          cookie: "Cookie 政策",
+          disclaimer: "免責聲明",
+          enquire: "立即詢價",
+          external: "外部／佔位"
+        },
+        desc: {
+          home: "品牌主張「讓物流變得輕鬆。」含四大服務入口與 Why Northgo 區塊。",
+          about: "願景、使命、價值觀與品牌沿革（1988 Max Seair → 2024 Northgo）。",
+          freight: "獨立頁面；子項目為同頁章節，未再拆 URL。",
+          project: "超大件、高價值專案物流。",
+          warehouse: "台中港倉儲、WMS、加值服務與離岸風電倉儲。",
+          shipping: "港口代理與海事服務皆在同頁。",
+          contact: "頁尾 Locations 也指向此頁，沒有獨立 /locations。",
+          news: "頁尾有連結，實際為 Not Found。",
+          legal: "頁尾政策頁面。",
+          external: "製作單位與社群佔位連結。"
+        },
+        ia: ["為何 Northgo", "服務", "關於", "聯絡", "消息 (404)", "法律", "語系"],
+        offices: [
+          { name: "台北（總部）", detail: "民生東路三段 10 號 7 樓<br>Tel +886-2-2531-8677<br>info.tpe@northgo.com" },
+          { name: "台中", detail: "Tel +886-4-2326-2580<br>info.txg@northgo.com" },
+          { name: "高雄", detail: "Tel +886-7-335-0730<br>info.khh@northgo.com" },
+          { name: "洛杉磯", detail: "Tel +1-714-853-1088<br>info.lax@northgo.com" },
+          { name: "胡志明市", detail: "Tel +84-28-9995-7368<br>info.hcmc@northgo.com" },
+          { name: "東京", detail: "Tel +81-3-6260-3944<br>info.tyo@northgo.com" },
+          { name: "大阪", detail: "Tel +81-6-6676-8395<br>info.osa@northgo.com" }
+        ]
+      },
+      ja: {
+        htmlLang: "ja",
+        brand: "Northgo サイトマップ",
+        treeLink: "ツリー簡易版",
+        mapLink: "拠点マップ",
+        navStructure: "構造図",
+        navPages: "ページ一覧",
+        navOffices: "拠点",
+        title: 'サイト構造を<span>わかりやすく</span>。',
+        lede: '<a href="https://www.northgo.com/ja" target="_blank" rel="noopener">www.northgo.com/ja</a> のナビ・フッター・公開ページに基づきます。下のリンクは<strong>日本語</strong>パスに切り替わります。公式 <code>/sitemap.xml</code> は 404 です。',
+        note: 'フッターの <code>/ja/news</code> は 404（未公開）。SNS アイコンは現在 <code>#</code> です。',
+        statPages: "確認済みページ",
+        statLocales: "言語",
+        statServices: "主要サービス",
+        statOffices: "グローバル拠点（同一ページ）",
+        structureTitle: "情報アーキテクチャ",
+        pagesTitle: "ページ一覧",
+        officesTitle: "お問い合わせページの拠点",
+        footer: "分析日：2026-11-11 · 出典：northgo.com",
+        backHome: "公式サイトへ",
+        live: "公開",
+        missing: "404",
+        anchor: "アンカー",
+        inpage: "同一ページ",
+        labels: {
+          home: "ホーム",
+          why: "Why Northgo",
+          about: "会社概要",
+          contact: "お問い合わせ",
+          locations: "拠点",
+          news: "ニュース",
+          services: "サービス",
+          freight: "フレイト物流",
+          project: "プロジェクト物流",
+          warehouse: "倉庫物流",
+          shipping: "シップエージェント",
+          ocean: "海上輸送",
+          air: "航空輸送",
+          land: "陸上輸送",
+          customs: "通関",
+          legal: "法務",
+          privacy: "プライバシーポリシー",
+          terms: "利用規約",
+          cookie: "Cookie ポリシー",
+          disclaimer: "免責事項",
+          enquire: "お問い合わせ",
+          external: "外部 / プレースホルダ"
+        },
+        desc: {
+          home: "「Making logistics effortless.」と 4 つのサービス入口、Why Northgo。",
+          about: "ビジョン・ミッション・価値観と沿革（1988 Max Seair → 2024 Northgo）。",
+          freight: "独立ページ。下位項目は同一ページ内セクション。",
+          project: "大型・高付加価値プロジェクト物流。",
+          warehouse: "台中港倉庫、WMS、付加価値・洋上風力倉庫。",
+          shipping: "港湾代理と海事サービスを同一ページで。",
+          contact: "フッターの Locations もこのページ。/locations は無し。",
+          news: "フッターにリンクがあるが Not Found。",
+          legal: "フッターのポリシーページ。",
+          external: "制作会社と SNS プレースホルダ。"
+        },
+        ia: ["Why Northgo", "サービス", "概要", "連絡", "News (404)", "法務", "言語"],
+        offices: [
+          { name: "台北（本社）", detail: "Tel +886-2-2531-8677<br>info.tpe@northgo.com" },
+          { name: "台中", detail: "Tel +886-4-2326-2580<br>info.txg@northgo.com" },
+          { name: "高雄", detail: "Tel +886-7-335-0730<br>info.khh@northgo.com" },
+          { name: "ロサンゼルス", detail: "Tel +1-714-853-1088<br>info.lax@northgo.com" },
+          { name: "ホーチミン", detail: "Tel +84-28-9995-7368<br>info.hcmc@northgo.com" },
+          { name: "東京", detail: "Tel +81-3-6260-3944<br>info.tyo@northgo.com" },
+          { name: "大阪", detail: "Tel +81-6-6676-8395<br>info.osa@northgo.com" }
+        ]
+      },
+      vi: {
+        htmlLang: "vi",
+        brand: "Sơ đồ trang Northgo",
+        treeLink: "Bản cây rút gọn",
+        mapLink: "Bản đồ văn phòng",
+        navStructure: "Cấu trúc",
+        navPages: "Trang",
+        navOffices: "Văn phòng",
+        title: 'Làm cấu trúc website <span>rõ ràng</span>.',
+        lede: 'Dựa trên điều hướng, footer và trang đang mở của <a href="https://www.northgo.com/vi" target="_blank" rel="noopener">www.northgo.com/vi</a>. Liên kết bên dưới dùng đường dẫn <strong>Tiếng Việt</strong>. <code>/sitemap.xml</code> chính thức trả 404.',
+        note: 'Footer vẫn có <code>/vi/news</code> (404, chưa xuất bản). Icon MXH hiện trỏ tới <code>#</code>.',
+        statPages: "Trang đã xác nhận",
+        statLocales: "Ngôn ngữ",
+        statServices: "Trang dịch vụ chính",
+        statOffices: "Văn phòng toàn cầu (cùng trang)",
+        structureTitle: "Kiến trúc thông tin",
+        pagesTitle: "Danh sách trang",
+        officesTitle: "Văn phòng trên trang Contact",
+        footer: "Ngày phân tích: 2026-11-11 · Nguồn: northgo.com",
+        backHome: "Về trang chính",
+        live: "Live",
+        missing: "404",
+        anchor: "Neo",
+        inpage: "Trong trang",
+        labels: {
+          home: "Trang chủ",
+          why: "Why Northgo",
+          about: "Giới thiệu",
+          contact: "Liên hệ",
+          locations: "Địa điểm",
+          news: "Tin tức",
+          services: "Dịch vụ",
+          freight: "Vận tải hàng hóa",
+          project: "Logistics dự án",
+          warehouse: "Kho bãi",
+          shipping: "Đại lý hàng hải",
+          ocean: "Đường biển",
+          air: "Đường hàng không",
+          land: "Đường bộ",
+          customs: "Thông quan",
+          legal: "Pháp lý",
+          privacy: "Chính sách bảo mật",
+          terms: "Điều khoản dịch vụ",
+          cookie: "Chính sách Cookie",
+          disclaimer: "Tuyên bố miễn trừ",
+          enquire: "Liên hệ ngay",
+          external: "Bên ngoài / placeholder"
+        },
+        desc: {
+          home: "Cam kết thương hiệu và bốn lối vào dịch vụ, cùng Why Northgo.",
+          about: "Tầm nhìn, sứ mệnh, giá trị và lịch sử (1988 Max Seair → 2024 Northgo).",
+          freight: "Trang độc lập; mục con là section trong trang.",
+          project: "Logistics dự án hàng siêu trường / giá trị cao.",
+          warehouse: "Kho cảng Đài Trung, WMS và dịch vụ gia tăng.",
+          shipping: "Đại lý cảng và dịch vụ hàng hải trên một trang.",
+          contact: "Locations ở footer cũng trỏ trang này; không có /locations.",
+          news: "Có link footer nhưng Not Found.",
+          legal: "Các trang chính sách ở footer.",
+          external: "Credit agency và placeholder MXH."
+        },
+        ia: ["Why Northgo", "Dịch vụ", "Giới thiệu", "Liên hệ", "Tin (404)", "Pháp lý", "Ngôn ngữ"],
+        offices: [
+          { name: "Đài Bắc (HQ)", detail: "Tel +886-2-2531-8677<br>info.tpe@northgo.com" },
+          { name: "Đài Trung", detail: "Tel +886-4-2326-2580<br>info.txg@northgo.com" },
+          { name: "Cao Hùng", detail: "Tel +886-7-335-0730<br>info.khh@northgo.com" },
+          { name: "Los Angeles", detail: "Tel +1-714-853-1088<br>info.lax@northgo.com" },
+          { name: "TP. Hồ Chí Minh", detail: "Tel +84-28-9995-7368<br>info.hcmc@northgo.com" },
+          { name: "Tokyo", detail: "Tel +81-3-6260-3944<br>info.tyo@northgo.com" },
+          { name: "Osaka", detail: "Tel +81-6-6676-8395<br>info.osa@northgo.com" }
+        ]
+      }
+    };
+
+    const PREFIX = { en: "", "zh-tw": "/zh-tw", ja: "/ja", vi: "/vi" };
+
+    function path(lang, p) {
+      const pre = PREFIX[lang] || "";
+      if (!p || p === "/") return pre || "/";
+      return pre + p;
+    }
+
+    function abs(lang, p, hash) {
+      const full = path(lang, p);
+      return BASE + (full === "/" ? "/" : full) + (hash || "");
+    }
+
+    function applyStatic(t) {
+      document.documentElement.lang = t.htmlLang;
+      document.title = t.brand + " | Sitemap";
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        const key = el.getAttribute("data-i18n");
+        if (t[key] != null) el.textContent = t[key];
+      });
+      document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+        const key = el.getAttribute("data-i18n-html");
+        if (t[key] != null) el.innerHTML = t[key];
+      });
+      const q = new URLSearchParams(location.search);
+      q.set("lang", currentLang);
+      const tree = document.querySelector('a[data-i18n="treeLink"]');
+      if (tree) tree.href = "sitemap-tree.html?" + q.toString();
+      const mapLink = document.querySelector('a[data-i18n="mapLink"]');
+      if (mapLink) mapLink.href = "locations-map.html";
+    }
+
+    function renderDiagram(lang, t) {
+      const L = t.labels;
+      const ia = t.ia;
+      document.getElementById("ia-diagram").innerHTML = `
+        <svg viewBox="0 0 1100 430" xmlns="http://www.w3.org/2000/svg" aria-label="${t.structureTitle}">
+          <defs>
+            <linearGradient id="g" x1="0" x2="1">
+              <stop offset="0" stop-color="#2ad4e8"/>
+              <stop offset="1" stop-color="#7ee8f4"/>
+            </linearGradient>
+          </defs>
+          <rect x="430" y="16" width="240" height="52" rx="14" fill="#0b335c" stroke="url(#g)"/>
+          <text x="550" y="48" text-anchor="middle" fill="#f4fbff" font-size="18" font-family="Segoe UI, sans-serif">${L.home} ${path(lang, "/")}</text>
+          <line x1="550" y1="68" x2="550" y2="104" stroke="#2ad4e8" stroke-width="2"/>
+          <line x1="80" y1="104" x2="1020" y2="104" stroke="#2ad4e8" stroke-width="2"/>
+          <g font-family="Segoe UI, sans-serif" font-size="13" fill="#f4fbff" text-anchor="middle">
+            <rect x="20" y="124" width="140" height="44" rx="12" fill="#0b335c" stroke="#2ad4e8"/><text x="90" y="151">${ia[0]}</text>
+            <rect x="180" y="124" width="140" height="44" rx="12" fill="#0b335c" stroke="#2ad4e8"/><text x="250" y="151">${ia[1]}</text>
+            <rect x="340" y="124" width="140" height="44" rx="12" fill="#0b335c" stroke="#2ad4e8"/><text x="410" y="151">${ia[2]}</text>
+            <rect x="500" y="124" width="140" height="44" rx="12" fill="#0b335c" stroke="#2ad4e8"/><text x="570" y="151">${ia[3]}</text>
+            <rect x="660" y="124" width="140" height="44" rx="12" fill="#0b335c" stroke="#f4c95d"/><text x="730" y="151">${ia[4]}</text>
+            <rect x="820" y="124" width="140" height="44" rx="12" fill="#0b335c" stroke="#2ad4e8"/><text x="890" y="151">${ia[5]}</text>
+            <rect x="980" y="124" width="100" height="44" rx="12" fill="#0b335c" stroke="#2ad4e8"/><text x="1030" y="151">${ia[6]}</text>
+          </g>
+          <g stroke="#2ad4e8" stroke-width="2" fill="none">
+            <path d="M250 168 V198 H90"/><path d="M250 198 H410"/><path d="M250 198 H570"/><path d="M250 198 H730"/>
+            <path d="M890 168 V250"/><path d="M1030 168 V250"/>
+          </g>
+          <g font-family="Segoe UI, sans-serif" font-size="12" fill="#b7c9d8" text-anchor="middle">
+            <rect x="20" y="214" width="140" height="36" rx="10" fill="#062445" stroke="#2ad4e8"/><text x="90" y="237">${L.freight}</text>
+            <rect x="180" y="214" width="140" height="36" rx="10" fill="#062445" stroke="#2ad4e8"/><text x="250" y="237">${L.project}</text>
+            <rect x="340" y="214" width="140" height="36" rx="10" fill="#062445" stroke="#2ad4e8"/><text x="410" y="237">${L.warehouse}</text>
+            <rect x="500" y="214" width="140" height="36" rx="10" fill="#062445" stroke="#2ad4e8"/><text x="570" y="237">${L.shipping}</text>
+            <rect x="20" y="266" width="140" height="28" rx="8" fill="#04182f" stroke="#2ad4e8"/><text x="90" y="285">${L.ocean} / ${L.air}</text>
+            <rect x="180" y="266" width="140" height="28" rx="8" fill="#04182f" stroke="#2ad4e8"/><text x="250" y="285">${L.customs}</text>
+            <rect x="820" y="262" width="140" height="30" rx="8" fill="#062445" stroke="#2ad4e8"/><text x="890" y="282">${L.privacy}</text>
+            <rect x="820" y="300" width="140" height="30" rx="8" fill="#062445" stroke="#2ad4e8"/><text x="890" y="320">${L.terms}</text>
+            <rect x="820" y="338" width="140" height="30" rx="8" fill="#062445" stroke="#2ad4e8"/><text x="890" y="358">${L.cookie}</text>
+            <rect x="820" y="376" width="140" height="30" rx="8" fill="#062445" stroke="#2ad4e8"/><text x="890" y="396">${L.disclaimer}</text>
+            <rect x="980" y="262" width="100" height="30" rx="8" fill="#062445" stroke="#2ad4e8"/><text x="1030" y="282">EN</text>
+            <rect x="980" y="300" width="100" height="30" rx="8" fill="#062445" stroke="#2ad4e8"/><text x="1030" y="320">ZH-TW</text>
+            <rect x="980" y="338" width="100" height="30" rx="8" fill="#062445" stroke="#2ad4e8"/><text x="1030" y="358">JA</text>
+            <rect x="980" y="376" width="100" height="30" rx="8" fill="#062445" stroke="#2ad4e8"/><text x="1030" y="396">VI</text>
+          </g>
+        </svg>`;
+    }
+
+    function card(title, pathText, body, linksHtml, tagClass, tagText) {
+      return `<article class="card">
+        <h3>${title} <span class="tag ${tagClass}">${tagText}</span></h3>
+        <span class="path">${pathText}</span>
+        <p>${body}</p>
+        <ul class="tree">${linksHtml}</ul>
+      </article>`;
+    }
+
+    function renderPages(lang, t) {
+      const L = t.labels;
+      const D = t.desc;
+      const grid = document.getElementById("pages-grid");
+      grid.innerHTML = [
+        card(L.home, path(lang, "/"), D.home, `
+          <li><a href="${abs(lang, "/")}" target="_blank" rel="noopener">${abs(lang, "/")}</a></li>
+          <li>${L.why} <a href="${abs(lang, "/", "#why-northgo")}" target="_blank" rel="noopener">${path(lang, "/")}#why-northgo</a> <span class="tag anchor">${t.anchor}</span></li>
+          <li>${L.enquire} → <a href="${abs(lang, "/contact", "#enquiry-form")}" target="_blank" rel="noopener">${path(lang, "/contact")}#enquiry-form</a></li>
+        `, "live", t.live),
+        card(L.about, path(lang, "/about"), D.about, `
+          <li><a href="${abs(lang, "/about")}" target="_blank" rel="noopener">${abs(lang, "/about")}</a></li>
+        `, "live", t.live),
+        card(L.freight, path(lang, "/services/freight-logistics"), D.freight, `
+          <li><a href="${abs(lang, "/services/freight-logistics")}" target="_blank" rel="noopener">${L.freight}</a></li>
+          <li>${L.ocean} <span class="tag anchor">${t.inpage}</span></li>
+          <li>${L.air} <span class="tag anchor">${t.inpage}</span></li>
+          <li>${L.land} <span class="tag anchor">${t.inpage}</span></li>
+          <li>${L.customs} <span class="tag anchor">${t.inpage}</span></li>
+        `, "live", t.live),
+        card(L.project, path(lang, "/services/project-logistics"), D.project, `
+          <li><a href="${abs(lang, "/services/project-logistics")}" target="_blank" rel="noopener">${L.project}</a></li>
+        `, "live", t.live),
+        card(L.warehouse, path(lang, "/services/warehouse-logistics"), D.warehouse, `
+          <li><a href="${abs(lang, "/services/warehouse-logistics")}" target="_blank" rel="noopener">${L.warehouse}</a></li>
+        `, "live", t.live),
+        card(L.shipping, path(lang, "/services/shipping-agency"), D.shipping, `
+          <li><a href="${abs(lang, "/services/shipping-agency")}" target="_blank" rel="noopener">${L.shipping}</a></li>
+        `, "live", t.live),
+        card(`${L.contact} / ${L.locations}`, path(lang, "/contact"), D.contact, `
+          <li><a href="${abs(lang, "/contact")}" target="_blank" rel="noopener">${abs(lang, "/contact")}</a></li>
+          <li>${L.enquire} <a href="${abs(lang, "/contact", "#enquiry-form")}" target="_blank" rel="noopener">#enquiry-form</a> <span class="tag anchor">${t.anchor}</span></li>
+        `, "live", t.live),
+        card(L.news, path(lang, "/news"), D.news, "", "missing", t.missing),
+        card(L.legal, path(lang, "/legal") + "/*", D.legal, `
+          <li><a href="${abs(lang, "/legal/privacy-policy")}" target="_blank" rel="noopener">${L.privacy}</a></li>
+          <li><a href="${abs(lang, "/legal/terms")}" target="_blank" rel="noopener">${L.terms}</a></li>
+          <li><a href="${abs(lang, "/legal/cookie-policy")}" target="_blank" rel="noopener">${L.cookie}</a></li>
+          <li><a href="${abs(lang, "/legal/disclaimer")}" target="_blank" rel="noopener">${L.disclaimer}</a></li>
+        `, "live", t.live),
+        card(L.external, "—", D.external, `
+          <li>Strategy Creative</li>
+          <li>Facebook / Instagram / Twitter → <code>#</code></li>
+        `, "live", t.live)
+      ].join("");
+    }
+
+    function renderOffices(t) {
+      document.getElementById("offices-grid").innerHTML = t.offices.map((o) => `
+        <div class="office"><h4>${o.name}</h4><p>${o.detail}</p></div>
+      `).join("");
+    }
+
+    let currentLang = "zh-tw";
+
+    function setLang(lang) {
+      if (!I18N[lang]) lang = "zh-tw";
+      currentLang = lang;
+      const t = I18N[lang];
+      document.querySelectorAll(".lang-switch button").forEach((btn) => {
+        btn.setAttribute("aria-pressed", String(btn.dataset.lang === lang));
+      });
+      const url = new URL(location.href);
+      url.searchParams.set("lang", lang);
+      history.replaceState(null, "", url);
+      applyStatic(t);
+      renderDiagram(lang, t);
+      renderPages(lang, t);
+      renderOffices(t);
+      document.getElementById("site-home").href = abs(lang, "/");
+    }
+
+    document.querySelectorAll(".lang-switch button").forEach((btn) => {
+      btn.addEventListener("click", () => setLang(btn.dataset.lang));
+    });
+
+    const initial = new URLSearchParams(location.search).get("lang") || "zh-tw";
+    setLang(initial);
+  </script>
+</body>
+</html>

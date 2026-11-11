@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+:root {
+  --navy: #062445;
+  --navy-deep: #04182f;
+  --navy-mid: #0a3a66;
+  --cyan: #2ad4e8;
+  --cyan-dim: rgba(42, 212, 232, 0.16);
+  --cyan-glow: rgba(42, 212, 232, 0.35);
+  --text: #f4fbff;
+  --text-ink: #0b1f33;
+  --muted: #b7c9d8;
+  --muted-ink: #5a6f82;
+  --card: rgba(255, 255, 255, 0.06);
+  --line: rgba(42, 212, 232, 0.28);
+  --surface: #ffffff;
+  --surface-soft: #f3f8fb;
+  --warn: #f4c95d;
+  --shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+  --radius: 18px;
+  --background: var(--surface);
+  --foreground: var(--text-ink);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --color-navy-mid: var(--navy-mid);
+  --color-cyan: var(--cyan);
+  --color-muted: var(--muted);
+  --color-muted-ink: var(--muted-ink);
+  --color-surface-soft: var(--surface-soft);
+  --color-line: var(--line);
+  --color-warn: var(--warn);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  line-height: 1.6;
+}
+
+.font-display,
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display), var(--font-body), sans-serif;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  z-index: 100;
+  background: var(--cyan);
+  color: var(--navy-deep);
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 700;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.hero-pattern {
+  background:
+    linear-gradient(
+      115deg,
+      rgba(4, 24, 47, 0.92) 0%,
+      rgba(6, 36, 69, 0.78) 42%,
+      rgba(6, 36, 69, 0.35) 100%
+    ),
+    radial-gradient(900px 420px at 85% 10%, rgba(42, 212, 232, 0.16), transparent 50%),
+    url("/brand/globe-light-ocean.jpg") right center / cover no-repeat,
+    linear-gradient(165deg, var(--navy-deep) 0%, var(--navy) 48%, var(--navy-mid) 100%);
+}
+
+.hero-pattern::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0c8 10 16 10 30 0v8c-14 10-22 10-30 0C22 18 14 18 0 8V0c14 10 22 10 30 0z' fill='%232ad4e8' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.leaflet-container {
+  font: inherit;
+  background: #0a1c30;
+}
+
+.leaflet-popup-content-wrapper {
+  background: #062445;
+  color: #f4fbff;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+.leaflet-popup-tip {
+  background: #062445;
+}
+
+.leaflet-popup-content a {
+  color: #2ad4e8;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

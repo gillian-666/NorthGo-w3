@@ -1,0 +1,44 @@
+{
+  "redirects": [
+    {
+      "source": "/privacy-policy",
+      "destination": "/legal/privacy-policy",
+      "permanent": true
+    },
+    {
+      "source": "/terms",
+      "destination": "/legal/terms",
+      "permanent": true
+    },
+    {
+      "source": "/cookie-policy",
+      "destination": "/legal/cookie-policy",
+      "permanent": true
+    },
+    {
+      "source": "/disclaimer",
+      "destination": "/legal/disclaimer",
+      "permanent": true
+    },
+    {
+      "source": "/:locale(zh-tw|ja|vi)/privacy-policy",
+      "destination": "/:locale/legal/privacy-policy",
+      "permanent": true
+    },
+    {
+      "source": "/:locale(zh-tw|ja|vi)/terms",
+      "destination": "/:locale/legal/terms",
+      "permanent": true
+    },
+    {
+      "source": "/:locale(zh-tw|ja|vi)/cookie-policy",
+      "destination": "/:locale/legal/cookie-policy",
+      "permanent": true
+    },
+    {
+      "source": "/:locale(zh-tw|ja|vi)/disclaimer",
+      "destination": "/:locale/legal/disclaimer",
+      "permanent": true
+    }
+  ]
+}

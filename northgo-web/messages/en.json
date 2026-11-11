@@ -1,0 +1,122 @@
+{
+  "meta": {
+    "siteName": "Northgo",
+    "homeTitle": "Northgo | Making logistics effortless",
+    "homeDescription": "Northgo delivers freight, project, warehouse, and shipping agency logistics with 30+ years of experience across Asia-Pacific and beyond."
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "about": "About",
+    "locations": "Locations",
+    "news": "News",
+    "contact": "Contact",
+    "enquire": "Enquire now",
+    "menu": "Menu",
+    "close": "Close",
+    "skip": "Skip to content",
+    "language": "Language"
+  },
+  "services": {
+    "freight-logistics": "Freight Logistics",
+    "project-logistics": "Project Logistics",
+    "warehouse-logistics": "Warehouse Logistics",
+    "shipping-agency": "Shipping Agency"
+  },
+  "home": {
+    "heroTitle": "Making logistics",
+    "heroAccent": "effortless.",
+    "heroLead": "With over 30 years of experience, we make logistics simple, intuitive, and hassle-free for businesses worldwide.",
+    "ctaEnquire": "Enquire now",
+    "ctaServices": "Our services",
+    "purposeEyebrow": "Our purpose",
+    "purposeTitle": "Logistics is a simple concept, made complicated.",
+    "purposeBody": "We strip away unnecessary complexity and deliver clear, efficient solutions so you can focus on growth.",
+    "servicesTitle": "Comprehensive, one-stop solutions",
+    "servicesLead": "Freight forwarding, project logistics, warehousing, and shipping agency—tailored to keep your supply chain moving.",
+    "learnMore": "Learn more",
+    "whyTitle": "Why Northgo?",
+    "whyBody": "We believe logistics should support your business, not complicate it. Our mission is simple: making logistics effortless.",
+    "statsYears": "30+ years",
+    "statsYearsLabel": "Industry experience",
+    "statsOffices": "7 offices",
+    "statsOfficesLabel": "Global presence",
+    "statsServices": "4 service lines",
+    "statsServicesLabel": "End-to-end coverage",
+    "pillars": {
+      "experts": {
+        "title": "Trusted logistics experts",
+        "body": "Decades of freight forwarding and supply-chain expertise across our global team."
+      },
+      "flexible": {
+        "title": "Flexible solutions",
+        "body": "Tailored plans that improve efficiency, reduce cost, and keep your chain agile."
+      },
+      "people": {
+        "title": "People-oriented service",
+        "body": "Personalised support so you can reach operations when you need them."
+      },
+      "committed": {
+        "title": "Committed to success",
+        "body": "Specialists who simplify shipping through a dependable global network."
+      }
+    },
+    "partnerTitle": "Partner with Northgo for effortless logistics.",
+    "partnerBody": "Explore our services, learn our approach, and contact us to make logistics work better for you.",
+    "partnerCta": "Get in touch"
+  },
+  "contact": {
+    "title": "Mastering complexity, delivering simplicity.",
+    "lead": "Tell us what you need—our team will follow up promptly.",
+    "formTitle": "How can we help?",
+    "name": "Full name",
+    "company": "Company",
+    "email": "Work email",
+    "phone": "Phone",
+    "service": "Service interest",
+    "serviceAny": "Not sure / general",
+    "tradeLane": "Trade lane / route",
+    "message": "Message",
+    "submit": "Send enquiry",
+    "sending": "Sending…",
+    "success": "Thank you—your enquiry has been received.",
+    "error": "Something went wrong. Please email us or try again.",
+    "officesTitle": "Prefer to call a local office?",
+    "officesCta": "View all locations"
+  },
+  "locations": {
+    "title": "Our global offices",
+    "lead": "Seven offices across Taiwan, Japan, Vietnam, and the United States—ready to support your shipments.",
+    "filterAll": "All",
+    "filterTaiwan": "Taiwan",
+    "filterJapan": "Japan",
+    "filterSea": "Southeast Asia",
+    "filterAmericas": "Americas",
+    "filterApac": "Asia-Pacific",
+    "hq": "Head office",
+    "tel": "Tel",
+    "fax": "Fax",
+    "email": "Email",
+    "mapLabel": "Interactive offices map"
+  },
+  "news": {
+    "title": "News",
+    "lead": "Updates and insights from Northgo will appear here.",
+    "empty": "Coming soon. Check back for company news and industry perspectives.",
+    "metaDescription": "Northgo news and insights—coming soon."
+  },
+  "footer": {
+    "tagline": "Making logistics effortless.",
+    "services": "Services",
+    "company": "Company",
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "cookie": "Cookie Policy",
+    "disclaimer": "Legal Disclaimer",
+    "rights": "© {year} Northgo Inc. All rights reserved."
+  },
+  "common": {
+    "backHome": "Back to home"
+  }
+}

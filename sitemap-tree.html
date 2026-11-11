@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Northgo 樹狀網站地圖</title>
+  <meta name="description" content="Northgo 精簡樹狀網站地圖，可依語系切換。" />
+  <style>
+    :root {
+      --navy: #062445;
+      --navy-deep: #04182f;
+      --cyan: #2ad4e8;
+      --cyan-dim: rgba(42, 212, 232, 0.16);
+      --text: #f4fbff;
+      --muted: #b7c9d8;
+      --line: rgba(42, 212, 232, 0.28);
+      --warn: #f4c95d;
+      --card: rgba(255, 255, 255, 0.05);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Segoe UI", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", "Hiragino Sans", sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, var(--navy-deep), var(--navy));
+      line-height: 1.5;
+    }
+
+    .wrap {
+      width: min(720px, calc(100% - 1.5rem));
+      margin: 0 auto;
+      padding: 1.25rem 0 2.5rem;
+    }
+
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.25rem, 4vw, 1.6rem);
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .lang-switch {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      padding: 3px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    .lang-switch button {
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      padding: 6px 10px;
+      border-radius: 999px;
+      cursor: pointer;
+      font: inherit;
+      font-size: 0.85rem;
+    }
+
+    .lang-switch button[aria-pressed="true"] {
+      background: var(--cyan-dim);
+      color: var(--cyan);
+      font-weight: 700;
+    }
+
+    .back {
+      color: var(--cyan);
+      text-decoration: none;
+      font-size: 0.9rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+    .back:hover { text-decoration: underline; }
+
+    .hint {
+      margin: 0 0 1rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .tree-box {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 1rem 1rem 1rem 0.35rem;
+    }
+
+    .tree {
+      list-style: none;
+      margin: 0;
+      padding-left: 1.15rem;
+    }
+
+    .tree ul {
+      list-style: none;
+      margin: 0.15rem 0 0.35rem;
+      padding-left: 1.1rem;
+      border-left: 1px solid var(--line);
+    }
+
+    .tree li {
+      position: relative;
+      margin: 0.28rem 0;
+      padding-left: 0.15rem;
+    }
+
+    .tree > li::before,
+    .tree ul > li::before {
+      content: "";
+      position: absolute;
+      left: -1.1rem;
+      top: 0.75em;
+      width: 0.7rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .tree a {
+      color: var(--cyan);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .tree a:hover { text-decoration: underline; }
+
+    .path {
+      color: var(--muted);
+      font-family: ui-monospace, Consolas, monospace;
+      font-size: 0.8rem;
+      margin-left: 0.35rem;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-left: 0.35rem;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--warn);
+      border: 1px solid rgba(244, 201, 93, 0.45);
+      border-radius: 999px;
+      padding: 0 0.4rem;
+      vertical-align: middle;
+    }
+
+    footer {
+      margin-top: 1rem;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    @media (max-width: 560px) {
+      .lang-switch { width: 100%; }
+      .lang-switch button { flex: 1; }
+      .back { width: 100%; text-align: center; }
+      .tree-box { padding-right: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1 id="title">Northgo 樹狀網站地圖</h1>
+      <div class="controls">
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button type="button" data-lang="en">EN</button>
+          <button type="button" data-lang="zh-tw" aria-pressed="true">繁中</button>
+          <button type="button" data-lang="ja">日本語</button>
+          <button type="button" data-lang="vi">VI</button>
+        </div>
+        <a class="back" id="full-link" href="sitemap.html">完整版</a>
+        <a class="back" id="map-link" href="locations-map.html">據點地圖</a>
+      </div>
+    </header>
+
+    <p class="hint" id="hint"></p>
+    <div class="tree-box">
+      <ul class="tree" id="tree"></ul>
+    </div>
+    <footer id="footer"></footer>
+  </div>
+
+  <script>
+    const BASE = "https://www.northgo.com";
+    const PREFIX = { en: "", "zh-tw": "/zh-tw", ja: "/ja", vi: "/vi" };
+
+    const I18N = {
+      en: {
+        lang: "en",
+        title: "Northgo tree sitemap",
+        hint: "Concise tree for the selected locale. Click a name to open the live page.",
+        full: "Full version",
+        map: "Offices map",
+        footer: "2026-11-11 · northgo.com",
+        home: "Home",
+        why: "Why Northgo",
+        services: "Services",
+        freight: "Freight Logistics",
+        project: "Project Logistics",
+        warehouse: "Warehouse Logistics",
+        shipping: "Shipping Agency",
+        about: "About",
+        contact: "Contact / Locations",
+        enquire: "Enquire form",
+        news: "News",
+        legal: "Legal",
+        privacy: "Privacy Policy",
+        terms: "Terms of Service",
+        cookie: "Cookie Policy",
+        disclaimer: "Disclaimer"
+      },
+      "zh-tw": {
+        lang: "zh-Hant",
+        title: "Northgo 樹狀網站地圖",
+        hint: "依選擇語系顯示對應路徑。點名稱可開啟官網頁面。",
+        full: "完整版",
+        map: "據點地圖",
+        footer: "2026-11-11 · northgo.com",
+        home: "首頁",
+        why: "為何選擇 Northgo",
+        services: "服務",
+        freight: "貨運物流",
+        project: "專案物流",
+        warehouse: "倉儲物流",
+        shipping: "船務代理",
+        about: "關於我們",
+        contact: "聯絡／據點",
+        enquire: "詢價表單",
+        news: "最新消息",
+        legal: "法律條款",
+        privacy: "隱私權政策",
+        terms: "服務條款",
+        cookie: "Cookie 政策",
+        disclaimer: "免責聲明"
+      },
+      ja: {
+        lang: "ja",
+        title: "Northgo ツリーサイトマップ",
+        hint: "選択した言語のパスを表示。名称をクリックで公式ページへ。",
+        full: "詳細版",
+        map: "拠点マップ",
+        footer: "2026-11-11 · northgo.com",
+        home: "ホーム",
+        why: "Why Northgo",
+        services: "サービス",
+        freight: "フレイト物流",
+        project: "プロジェクト物流",
+        warehouse: "倉庫物流",
+        shipping: "シップエージェント",
+        about: "会社概要",
+        contact: "お問い合わせ／拠点",
+        enquire: "問い合わせフォーム",
+        news: "ニュース",
+        legal: "法務",
+        privacy: "プライバシー",
+        terms: "利用規約",
+        cookie: "Cookie",
+        disclaimer: "免責事項"
+      },
+      vi: {
+        lang: "vi",
+        title: "Sơ đồ cây Northgo",
+        hint: "Hiển thị đường dẫn theo ngôn ngữ đã chọn. Bấm tên để mở trang live.",
+        full: "Bản đầy đủ",
+        map: "Bản đồ văn phòng",
+        footer: "2026-11-11 · northgo.com",
+        home: "Trang chủ",
+        why: "Why Northgo",
+        services: "Dịch vụ",
+        freight: "Vận tải hàng hóa",
+        project: "Logistics dự án",
+        warehouse: "Kho bãi",
+        shipping: "Đại lý hàng hải",
+        about: "Giới thiệu",
+        contact: "Liên hệ / Địa điểm",
+        enquire: "Form liên hệ",
+        news: "Tin tức",
+        legal: "Pháp lý",
+        privacy: "Bảo mật",
+        terms: "Điều khoản",
+        cookie: "Cookie",
+        disclaimer: "Miễn trừ"
+      }
+    };
+
+    function p(lang, route) {
+      const pre = PREFIX[lang] || "";
+      if (!route || route === "/") return pre || "/";
+      return pre + route;
+    }
+
+    function href(lang, route, hash) {
+      const full = p(lang, route);
+      return BASE + (full === "/" ? "/" : full) + (hash || "");
+    }
+
+    function item(label, url, pathText, badge) {
+      return `<li><a href="${url}" target="_blank" rel="noopener">${label}</a><span class="path">${pathText}</span>${badge || ""}</li>`;
+    }
+
+    function render(lang) {
+      const t = I18N[lang];
+      document.documentElement.lang = t.lang;
+      document.title = t.title;
+      document.getElementById("title").textContent = t.title;
+      document.getElementById("hint").textContent = t.hint;
+      document.getElementById("footer").textContent = t.footer;
+      document.getElementById("full-link").textContent = t.full;
+      document.getElementById("map-link").textContent = t.map;
+      const q = new URLSearchParams(location.search);
+      q.set("lang", lang);
+      document.getElementById("full-link").href = "sitemap.html?" + q.toString();
+      document.getElementById("map-link").href = "locations-map.html";
+
+      document.querySelectorAll(".lang-switch button").forEach((btn) => {
+        btn.setAttribute("aria-pressed", String(btn.dataset.lang === lang));
+      });
+
+      const badge404 = `<span class="badge">404</span>`;
+      document.getElementById("tree").innerHTML = `
+        <li>
+          <a href="${href(lang, "/")}" target="_blank" rel="noopener">${t.home}</a>
+          <span class="path">${p(lang, "/")}</span>
+          <ul>
+            ${item(t.why, href(lang, "/", "#why-northgo"), p(lang, "/") + "#why-northgo")}
+            <li>
+              <span>${t.services}</span>
+              <ul>
+                ${item(t.freight, href(lang, "/services/freight-logistics"), p(lang, "/services/freight-logistics"))}
+                ${item(t.project, href(lang, "/services/project-logistics"), p(lang, "/services/project-logistics"))}
+                ${item(t.warehouse, href(lang, "/services/warehouse-logistics"), p(lang, "/services/warehouse-logistics"))}
+                ${item(t.shipping, href(lang, "/services/shipping-agency"), p(lang, "/services/shipping-agency"))}
+              </ul>
+            </li>
+            ${item(t.about, href(lang, "/about"), p(lang, "/about"))}
+            <li>
+              <a href="${href(lang, "/contact")}" target="_blank" rel="noopener">${t.contact}</a>
+              <span class="path">${p(lang, "/contact")}</span>
+              <ul>
+                ${item(t.enquire, href(lang, "/contact", "#enquiry-form"), p(lang, "/contact") + "#enquiry-form")}
+              </ul>
+            </li>
+            ${item(t.news, href(lang, "/news"), p(lang, "/news"), badge404)}
+            <li>
+              <span>${t.legal}</span>
+              <ul>
+                ${item(t.privacy, href(lang, "/legal/privacy-policy"), p(lang, "/legal/privacy-policy"))}
+                ${item(t.terms, href(lang, "/legal/terms"), p(lang, "/legal/terms"))}
+                ${item(t.cookie, href(lang, "/legal/cookie-policy"), p(lang, "/legal/cookie-policy"))}
+                ${item(t.disclaimer, href(lang, "/legal/disclaimer"), p(lang, "/legal/disclaimer"))}
+              </ul>
+            </li>
+          </ul>
+        </li>`;
+
+      history.replaceState(null, "", "?" + q.toString());
+    }
+
+    document.querySelectorAll(".lang-switch button").forEach((btn) => {
+      btn.addEventListener("click", () => render(btn.dataset.lang));
+    });
+
+    render(new URLSearchParams(location.search).get("lang") || "zh-tw");
+  </script>
+</body>
+</html>

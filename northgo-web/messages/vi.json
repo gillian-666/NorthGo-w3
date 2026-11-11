@@ -1,0 +1,122 @@
+{
+  "meta": {
+    "siteName": "Northgo",
+    "homeTitle": "Northgo | Making logistics effortless",
+    "homeDescription": "Northgo cung cấp vận tải, logistics dự án, kho bãi và đại lý hàng hải với hơn 30 năm kinh nghiệm tại châu Á - Thái Bình Dương."
+  },
+  "nav": {
+    "home": "Trang chủ",
+    "services": "Dịch vụ",
+    "about": "Giới thiệu",
+    "locations": "Địa điểm",
+    "news": "Tin tức",
+    "contact": "Liên hệ",
+    "enquire": "Gửi yêu cầu",
+    "menu": "Menu",
+    "close": "Đóng",
+    "skip": "Bỏ qua đến nội dung",
+    "language": "Ngôn ngữ"
+  },
+  "services": {
+    "freight-logistics": "Vận tải hàng hóa",
+    "project-logistics": "Logistics dự án",
+    "warehouse-logistics": "Kho bãi",
+    "shipping-agency": "Đại lý hàng hải"
+  },
+  "home": {
+    "heroTitle": "Làm logistics trở nên",
+    "heroAccent": "dễ dàng.",
+    "heroLead": "Hơn 30 năm kinh nghiệm giúp chúng tôi mang logistics đơn giản, trực quan và ít phiền phức cho doanh nghiệp toàn cầu.",
+    "ctaEnquire": "Gửi yêu cầu",
+    "ctaServices": "Dịch vụ của chúng tôi",
+    "purposeEyebrow": "Mục đích",
+    "purposeTitle": "Logistics vốn đơn giản nhưng thường bị làm phức tạp.",
+    "purposeBody": "Chúng tôi loại bỏ phức tạp thừa và mang giải pháp rõ ràng, hiệu quả để bạn tập trung tăng trưởng.",
+    "servicesTitle": "Giải pháp một cửa toàn diện",
+    "servicesLead": "Giao nhận, logistics dự án, kho bãi và đại lý tàu—thiết kế để chuỗi cung ứng luôn chuyển động.",
+    "learnMore": "Tìm hiểu thêm",
+    "whyTitle": "Vì sao Northgo?",
+    "whyBody": "Logistics nên hỗ trợ doanh nghiệp, không làm phức tạp. Sứ mệnh của chúng tôi: làm logistics effortless.",
+    "statsYears": "30+ năm",
+    "statsYearsLabel": "Kinh nghiệm ngành",
+    "statsOffices": "7 văn phòng",
+    "statsOfficesLabel": "Hiện diện toàn cầu",
+    "statsServices": "4 dòng dịch vụ",
+    "statsServicesLabel": "Bao phủ đầu cuối",
+    "pillars": {
+      "experts": {
+        "title": "Chuyên gia logistics đáng tin",
+        "body": "Đội ngũ toàn cầu với hàng thập kỷ kinh nghiệm giao nhận và chuỗi cung ứng."
+      },
+      "flexible": {
+        "title": "Giải pháp linh hoạt",
+        "body": "Thiết kế riêng để tăng hiệu quả, giảm chi phí và giữ chuỗi cung ứng linh hoạt."
+      },
+      "people": {
+        "title": "Dịch vụ hướng con người",
+        "body": "Hỗ trợ cá nhân hóa để bạn kết nối vận hành khi cần."
+      },
+      "committed": {
+        "title": "Cam kết thành công",
+        "body": "Chuyên viên đơn giản hóa vận chuyển qua mạng lưới toàn cầu đáng tin."
+      }
+    },
+    "partnerTitle": "Đồng hành cùng Northgo cho logistics dễ dàng.",
+    "partnerBody": "Khám phá dịch vụ, hiểu cách làm việc của chúng tôi và liên hệ để logistics phục vụ bạn tốt hơn.",
+    "partnerCta": "Liên hệ"
+  },
+  "contact": {
+    "title": "Làm chủ phức tạp, mang đến sự đơn giản.",
+    "lead": "Cho chúng tôi biết nhu cầu—đội ngũ sẽ phản hồi sớm.",
+    "formTitle": "Chúng tôi có thể giúp gì?",
+    "name": "Họ tên",
+    "company": "Công ty",
+    "email": "Email công việc",
+    "phone": "Điện thoại",
+    "service": "Dịch vụ quan tâm",
+    "serviceAny": "Chưa chắc / chung",
+    "tradeLane": "Tuyến thương mại / lộ trình",
+    "message": "Nội dung",
+    "submit": "Gửi yêu cầu",
+    "sending": "Đang gửi…",
+    "success": "Cảm ơn bạn—chúng tôi đã nhận yêu cầu.",
+    "error": "Có lỗi xảy ra. Vui lòng gửi email hoặc thử lại.",
+    "officesTitle": "Muốn gọi văn phòng địa phương?",
+    "officesCta": "Xem tất cả địa điểm"
+  },
+  "locations": {
+    "title": "Văn phòng toàn cầu",
+    "lead": "Bảy văn phòng tại Đài Loan, Nhật Bản, Việt Nam và Hoa Kỳ sẵn sàng hỗ trợ lô hàng của bạn.",
+    "filterAll": "Tất cả",
+    "filterTaiwan": "Đài Loan",
+    "filterJapan": "Nhật Bản",
+    "filterSea": "Đông Nam Á",
+    "filterAmericas": "Châu Mỹ",
+    "filterApac": "Châu Á - Thái Bình Dương",
+    "hq": "Trụ sở",
+    "tel": "Tel",
+    "fax": "Fax",
+    "email": "Email",
+    "mapLabel": "Bản đồ văn phòng tương tác"
+  },
+  "news": {
+    "title": "Tin tức",
+    "lead": "Cập nhật và góc nhìn từ Northgo sẽ xuất hiện tại đây.",
+    "empty": "Sắp ra mắt. Hãy quay lại để xem tin công ty và ngành.",
+    "metaDescription": "Tin tức Northgo — sắp ra mắt."
+  },
+  "footer": {
+    "tagline": "Making logistics effortless.",
+    "services": "Dịch vụ",
+    "company": "Công ty",
+    "legal": "Pháp lý",
+    "privacy": "Chính sách bảo mật",
+    "terms": "Điều khoản dịch vụ",
+    "cookie": "Chính sách Cookie",
+    "disclaimer": "Tuyên bố miễn trừ",
+    "rights": "© {year} Northgo Inc. Đã đăng ký bản quyền."
+  },
+  "common": {
+    "backHome": "Về trang chủ"
+  }
+}

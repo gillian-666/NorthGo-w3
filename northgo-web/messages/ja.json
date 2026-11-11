@@ -1,0 +1,122 @@
+{
+  "meta": {
+    "siteName": "Northgo",
+    "homeTitle": "Northgo | Making logistics effortless",
+    "homeDescription": "Northgo はフレイト、プロジェクト、倉庫、シップエージェントを提供。30年以上の経験でアジア太平洋ほかを支援します。"
+  },
+  "nav": {
+    "home": "ホーム",
+    "services": "サービス",
+    "about": "会社概要",
+    "locations": "拠点",
+    "news": "ニュース",
+    "contact": "お問い合わせ",
+    "enquire": "お問い合わせ",
+    "menu": "メニュー",
+    "close": "閉じる",
+    "skip": "本文へスキップ",
+    "language": "言語"
+  },
+  "services": {
+    "freight-logistics": "フレイト物流",
+    "project-logistics": "プロジェクト物流",
+    "warehouse-logistics": "倉庫物流",
+    "shipping-agency": "シップエージェント"
+  },
+  "home": {
+    "heroTitle": "物流を",
+    "heroAccent": "シンプルに。",
+    "heroLead": "30年以上の経験で、世界中のビジネスに直感的で負担の少ない物流を届けます。",
+    "ctaEnquire": "お問い合わせ",
+    "ctaServices": "サービスを見る",
+    "purposeEyebrow": "パーパス",
+    "purposeTitle": "物流は本来シンプルなのに、複雑になりがちです。",
+    "purposeBody": "余分な複雑さを取り除き、成長に集中できる明確で効率的な解決策を届けます。",
+    "servicesTitle": "包括的なワンストップソリューション",
+    "servicesLead": "フレイト、プロジェクト、倉庫、シップエージェント——サプライチェーンを止めない設計。",
+    "learnMore": "詳しく見る",
+    "whyTitle": "なぜ Northgo？",
+    "whyBody": "物流はビジネスを支え、妨げないべきです。ミッションは明確：物流をeffortlessに。",
+    "statsYears": "30年以上",
+    "statsYearsLabel": "業界経験",
+    "statsOffices": "7拠点",
+    "statsOfficesLabel": "グローバル展開",
+    "statsServices": "4サービス",
+    "statsServicesLabel": "一気通貫の対応",
+    "pillars": {
+      "experts": {
+        "title": "信頼できる物流の専門家",
+        "body": "グローバルチームが数十年のフォワーディング知見を提供。"
+      },
+      "flexible": {
+        "title": "柔軟なソリューション",
+        "body": "効率向上・コスト削減・俊敏性を高める個別設計。"
+      },
+      "people": {
+        "title": "人に寄り添うサービス",
+        "body": "必要なときにオペレーションへつながるパーソナル支援。"
+      },
+      "committed": {
+        "title": "成功へのコミット",
+        "body": "頼れるネットワークで輸送をシンプルにします。"
+      }
+    },
+    "partnerTitle": "Northgo と、effortless な物流を。",
+    "partnerBody": "サービスを知り、アプローチを理解し、より良い物流のためにご連絡ください。",
+    "partnerCta": "連絡する"
+  },
+  "contact": {
+    "title": "複雑さを掌握し、シンプルを届ける。",
+    "lead": "ご要件をお知らせください。迅速に折り返します。",
+    "formTitle": "どのようにお手伝いできますか？",
+    "name": "氏名",
+    "company": "会社名",
+    "email": "勤務先メール",
+    "phone": "電話",
+    "service": "関心のあるサービス",
+    "serviceAny": "未定／一般",
+    "tradeLane": "航路／ルート",
+    "message": "メッセージ",
+    "submit": "送信する",
+    "sending": "送信中…",
+    "success": "ありがとうございます。お問い合わせを受け付けました。",
+    "error": "送信に失敗しました。メールでご連絡いただくか、再度お試しください。",
+    "officesTitle": "現地オフィスに電話しますか？",
+    "officesCta": "すべての拠点を見る"
+  },
+  "locations": {
+    "title": "グローバルオフィス",
+    "lead": "台湾・日本・ベトナム・米国の7拠点が貨物をサポートします。",
+    "filterAll": "すべて",
+    "filterTaiwan": "台湾",
+    "filterJapan": "日本",
+    "filterSea": "東南アジア",
+    "filterAmericas": "米州",
+    "filterApac": "アジア太平洋",
+    "hq": "本社",
+    "tel": "Tel",
+    "fax": "Fax",
+    "email": "Email",
+    "mapLabel": "インタラクティブ拠点マップ"
+  },
+  "news": {
+    "title": "ニュース",
+    "lead": "Northgo の最新情報とインサイトをここに掲載します。",
+    "empty": "近日公開。企業ニュースと業界視点をお待ちください。",
+    "metaDescription": "Northgo ニュース — 近日公開。"
+  },
+  "footer": {
+    "tagline": "Making logistics effortless.",
+    "services": "サービス",
+    "company": "会社",
+    "legal": "法務",
+    "privacy": "プライバシーポリシー",
+    "terms": "利用規約",
+    "cookie": "Cookie ポリシー",
+    "disclaimer": "免責事項",
+    "rights": "© {year} Northgo Inc. All rights reserved."
+  },
+  "common": {
+    "backHome": "ホームへ戻る"
+  }
+}

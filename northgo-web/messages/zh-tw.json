@@ -1,0 +1,122 @@
+{
+  "meta": {
+    "siteName": "Northgo",
+    "homeTitle": "Northgo | 讓物流變得輕鬆",
+    "homeDescription": "Northgo 提供貨運、專案、倉儲與船務代理服務，累積逾 30 年經驗，服務亞太與全球客戶。"
+  },
+  "nav": {
+    "home": "首頁",
+    "services": "服務",
+    "about": "關於我們",
+    "locations": "據點",
+    "news": "最新消息",
+    "contact": "聯絡我們",
+    "enquire": "立即詢價",
+    "menu": "選單",
+    "close": "關閉",
+    "skip": "跳至主要內容",
+    "language": "語系"
+  },
+  "services": {
+    "freight-logistics": "貨運物流",
+    "project-logistics": "專案物流",
+    "warehouse-logistics": "倉儲物流",
+    "shipping-agency": "船務代理"
+  },
+  "home": {
+    "heroTitle": "讓物流變得",
+    "heroAccent": "輕鬆。",
+    "heroLead": "憑藉逾 30 年經驗，我們讓全球企業的物流更簡單、直覺、無負擔。",
+    "ctaEnquire": "立即詢價",
+    "ctaServices": "認識服務",
+    "purposeEyebrow": "我們的宗旨",
+    "purposeTitle": "物流本該簡單，卻常被搞複雜。",
+    "purposeBody": "我們去除多餘複雜，提供清晰有效的方案，讓您專注成長。",
+    "servicesTitle": "一站式完整解決方案",
+    "servicesLead": "貨運代理、專案物流、倉儲與船務代理——量身打造，讓供應鏈持續運轉。",
+    "learnMore": "了解更多",
+    "whyTitle": "為何選擇 Northgo？",
+    "whyBody": "我們相信物流應支援事業、而非增加負擔。使命很簡單：讓物流變得輕鬆。",
+    "statsYears": "30+ 年",
+    "statsYearsLabel": "產業經驗",
+    "statsOffices": "7 個據點",
+    "statsOfficesLabel": "全球布局",
+    "statsServices": "4 大服務",
+    "statsServicesLabel": "端到端覆蓋",
+    "pillars": {
+      "experts": {
+        "title": "值得信賴的物流專家",
+        "body": "全球團隊擁有數十年貨運與供應鏈專業。"
+      },
+      "flexible": {
+        "title": "靈活方案",
+        "body": "量身規劃以提升效率、降低成本、保持敏捷。"
+      },
+      "people": {
+        "title": "以人為本的服務",
+        "body": "個人化支援，讓您在需要時能聯繫營運團隊。"
+      },
+      "committed": {
+        "title": "致力於您的成功",
+        "body": "透過可靠全球網絡，簡化您的運輸需求。"
+      }
+    },
+    "partnerTitle": "與 Northgo 攜手，讓物流更輕鬆。",
+    "partnerBody": "探索服務、了解我們的方法，並與我們聯繫，讓物流為您所用。",
+    "partnerCta": "與我們聯繫"
+  },
+  "contact": {
+    "title": "駕馭複雜，交付簡單。",
+    "lead": "告訴我們您的需求——團隊將盡快回覆。",
+    "formTitle": "我們能如何協助？",
+    "name": "姓名",
+    "company": "公司",
+    "email": "公司 Email",
+    "phone": "電話",
+    "service": "感興趣的服務",
+    "serviceAny": "不確定／一般諮詢",
+    "tradeLane": "貿易航線／路徑",
+    "message": "訊息",
+    "submit": "送出詢價",
+    "sending": "送出中…",
+    "success": "感謝您——我們已收到詢價。",
+    "error": "送出失敗。請改寄信或稍後再試。",
+    "officesTitle": "想直接聯絡當地辦公室？",
+    "officesCta": "查看所有據點"
+  },
+  "locations": {
+    "title": "我們的全球據點",
+    "lead": "橫跨台灣、日本、越南與美國共七個辦公室，隨時支援您的貨物。",
+    "filterAll": "全部",
+    "filterTaiwan": "台灣",
+    "filterJapan": "日本",
+    "filterSea": "東南亞",
+    "filterAmericas": "美洲",
+    "filterApac": "亞太",
+    "hq": "總部",
+    "tel": "電話",
+    "fax": "傳真",
+    "email": "Email",
+    "mapLabel": "互動式據點地圖"
+  },
+  "news": {
+    "title": "最新消息",
+    "lead": "Northgo 的最新動態與觀點將發布於此。",
+    "empty": "即將推出。敬請期待公司消息與產業觀點。",
+    "metaDescription": "Northgo 最新消息——即將推出。"
+  },
+  "footer": {
+    "tagline": "讓物流變得輕鬆。",
+    "services": "服務",
+    "company": "公司",
+    "legal": "法律條款",
+    "privacy": "隱私權政策",
+    "terms": "服務條款",
+    "cookie": "Cookie 政策",
+    "disclaimer": "免責聲明",
+    "rights": "© {year} Northgo Inc. 版權所有。"
+  },
+  "common": {
+    "backHome": "返回首頁"
+  }
+}
