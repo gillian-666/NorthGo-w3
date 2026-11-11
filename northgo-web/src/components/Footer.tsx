@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { serviceSlugs } from "@/lib/site";
+import { assetPath } from "@/lib/paths";
 
 export async function Footer() {
   const t = await getTranslations("footer");
@@ -14,7 +15,7 @@ export async function Footer() {
         <div className="md:col-span-1">
           <Link href="/" aria-label="Northgo">
             <img
-              src="/brand/logo-teal-white.svg"
+              src={assetPath("/brand/logo-teal-white.svg")}
               alt="Northgo"
               width={160}
               height={31}

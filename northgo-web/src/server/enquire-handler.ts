@@ -1,3 +1,8 @@
+/**
+ * Reference enquire handler for Node hosts (Vercel etc.).
+ * GitHub Pages uses static export, so this is not mounted as a Route Handler.
+ * Restore under `src/app/api/enquire/route.ts` when deploying to a Node runtime.
+ */
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { Resend } from "resend";
@@ -12,7 +17,7 @@ const schema = z.object({
   message: z.string().min(1).max(5000),
 });
 
-export async function POST(request: Request) {
+export async function handleEnquirePost(request: Request) {
   let json: unknown;
   try {
     json = await request.json();

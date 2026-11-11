@@ -20,9 +20,25 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: northgo-web
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: northgo-web/package-lock.json
+
+      - name: Install
+        run: npm ci
+
+      - name: Build static export
+        run: npm run build:pages
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
@@ -30,8 +46,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: docs
-          include-hidden-files: true
+          path: northgo-web/out
 
       - name: Deploy to GitHub Pages
         id: deployment

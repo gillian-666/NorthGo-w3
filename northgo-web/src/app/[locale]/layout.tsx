@@ -7,6 +7,7 @@ import { Footer } from "@/components/Footer";
 import { Analytics } from "@/components/Analytics";
 import { OrganizationJsonLd } from "@/components/JsonLd";
 import { routing, localeHtmlLang, type Locale } from "@/i18n/routing";
+import { assetPath } from "@/lib/paths";
 import "../globals.css";
 
 const display = Outfit({
@@ -37,10 +38,14 @@ export default async function LocaleLayout({ children, params }: Props) {
   setRequestLocale(locale);
   const messages = await getMessages();
   const htmlLang = localeHtmlLang[locale as Locale];
+  const heroGlobe = `url("${assetPath("/brand/globe-light-ocean.jpg")}")`;
 
   return (
     <html lang={htmlLang} className={`${display.variable} ${body.variable}`}>
-      <body className="flex min-h-screen flex-col antialiased">
+      <body
+        className="flex min-h-screen flex-col antialiased"
+        style={{ ["--hero-globe-image" as string]: heroGlobe }}
+      >
         <NextIntlClientProvider messages={messages}>
           <a href="#main" className="skip-link">
             {(messages as { nav?: { skip?: string } }).nav?.skip ??

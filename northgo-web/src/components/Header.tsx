@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { serviceSlugs } from "@/lib/site";
+import { assetPath } from "@/lib/paths";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 
 export function Header() {
@@ -24,7 +25,7 @@ export function Header() {
       <div className="mx-auto flex w-[min(1180px,calc(100%-2rem))] items-center justify-between gap-4 py-3">
         <Link href="/" className="flex items-center" aria-label="Northgo">
           <img
-            src="/brand/logo-teal-blue.svg"
+            src={assetPath("/brand/logo-teal-blue.svg")}
             alt="Northgo"
             width={160}
             height={31}

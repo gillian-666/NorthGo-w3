@@ -91,6 +91,7 @@ a {
 }
 
 .hero-pattern {
+  --hero-globe-image: url("/brand/globe-light-ocean.jpg");
   background:
     linear-gradient(
       115deg,
@@ -99,7 +100,7 @@ a {
       rgba(6, 36, 69, 0.35) 100%
     ),
     radial-gradient(900px 420px at 85% 10%, rgba(42, 212, 232, 0.16), transparent 50%),
-    url("/brand/globe-light-ocean.jpg") right center / cover no-repeat,
+    var(--hero-globe-image) right center / cover no-repeat,
     linear-gradient(165deg, var(--navy-deep) 0%, var(--navy) 48%, var(--navy-mid) 100%);
 }
 

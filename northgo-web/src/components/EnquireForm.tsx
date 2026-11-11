@@ -3,6 +3,7 @@
 import { FormEvent, useState } from "react";
 import { useTranslations } from "next-intl";
 import { serviceSlugs } from "@/lib/site";
+import { assetPath } from "@/lib/paths";
 
 export function EnquireForm() {
   const t = useTranslations("contact");
@@ -17,8 +18,36 @@ export function EnquireForm() {
     const form = e.currentTarget;
     const data = Object.fromEntries(new FormData(form).entries());
 
+    const subject = encodeURIComponent(
+      `Northgo enquiry from ${String(data.name || "")} (${String(data.company || "")})`,
+    );
+    const body = encodeURIComponent(
+      [
+        `Name: ${data.name || ""}`,
+        `Company: ${data.company || ""}`,
+        `Email: ${data.email || ""}`,
+        `Phone: ${data.phone || "-"}`,
+        `Service: ${data.service || "-"}`,
+        `Trade lane: ${data.tradeLane || "-"}`,
+        "",
+        String(data.message || ""),
+      ].join("\n"),
+    );
+
+    const useMailto = () => {
+      window.location.href = `mailto:info.tpe@northgo.com?subject=${subject}&body=${body}`;
+      setStatus("ok");
+      form.reset();
+    };
+
     try {
-      const res = await fetch("/api/enquire", {
+      // Static GitHub Pages has no API routes — fall back to mailto.
+      if (process.env.NEXT_PUBLIC_STATIC_EXPORT === "1") {
+        useMailto();
+        return;
+      }
+
+      const res = await fetch(assetPath("/api/enquire"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -27,7 +56,7 @@ export function EnquireForm() {
       setStatus("ok");
       form.reset();
     } catch {
-      setStatus("err");
+      useMailto();
     }
   }
 
