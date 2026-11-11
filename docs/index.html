@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>NorthGo-w3 | Prototypes</title>
-  <meta name="description" content="Northgo 靜態原型：Logo／地球儀預覽、網站地圖與全球據點地圖。" />
-  <meta name="northgo-bump" content="20261112.1" />
+  <meta name="description" content="Northgo 靜態原型：網站地圖與全球據點地圖。" />
+  <meta name="northgo-bump" content="20261111.2" />
   <link rel="icon" href="brand/favicon.png" type="image/png" />
   <style>
     :root {
@@ -22,20 +22,13 @@
       font-family: "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
       color: var(--text);
       background:
-        linear-gradient(115deg, rgba(4,24,47,0.88), rgba(6,36,69,0.55)),
-        url("brand/globe-light-ocean.jpg") center / cover no-repeat,
+        radial-gradient(900px 420px at 10% -10%, rgba(42, 212, 232, 0.16), transparent 50%),
         linear-gradient(180deg, var(--navy-deep), var(--navy));
       display: grid;
       place-items: center;
       padding: 2rem;
     }
     main { max-width: 36rem; width: 100%; }
-    .logo {
-      height: 32px;
-      width: auto;
-      display: block;
-      margin-bottom: 1.25rem;
-    }
     h1 { margin: 0 0 0.5rem; font-size: 1.75rem; letter-spacing: 0.02em; }
     p { margin: 0 0 1.5rem; color: var(--muted); line-height: 1.6; }
     ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
@@ -57,16 +50,14 @@
 </head>
 <body>
   <main>
-    <img class="logo" src="brand/logo-teal-blue.svg" alt="Northgo" width="160" height="31" />
     <h1>NorthGo-w3</h1>
-    <p>靜態原型入口。Logo／地球儀成果已同步到 GitHub Pages。</p>
+    <p>靜態原型入口。正式行銷站請見 northgo-web（Vercel）。</p>
     <ul>
-      <li><a href="hero-preview.html">Logo／地球儀 Hero 預覽</a></li>
       <li><a href="sitemap.html">網站地圖 Sitemap</a></li>
       <li><a href="sitemap-tree.html">樹狀網站地圖</a></li>
       <li><a href="locations-map.html">全球據點地圖</a></li>
     </ul>
-    <p class="bump">bump 20261112.1</p>
+    <p class="bump">bump 20261111.2</p>
   </main>
 </body>
 </html>
