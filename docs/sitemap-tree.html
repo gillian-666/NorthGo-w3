@@ -322,7 +322,16 @@
       document.title = t.title;
       document.getElementById("title").textContent = t.title;
       document.getElementById("hint").textContent = t.hint;
-      document.getElementById("footer").textContent = t.footer;
+      document.getElementById("footer").innerHTML =
+        t.footer + ' · <span data-version></span>';
+      fetch("BUMP")
+        .then((r) => r.text())
+        .then((v) => {
+          document.querySelectorAll("[data-version]").forEach((el) => {
+            el.textContent = "v" + v.trim();
+          });
+        })
+        .catch(() => {});
       document.getElementById("full-link").textContent = t.full;
       document.getElementById("map-link").textContent = t.map;
       const q = new URLSearchParams(location.search);
