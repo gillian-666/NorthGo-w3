@@ -308,7 +308,6 @@
   <footer>
     <div class="wrap">
       <span data-i18n="footer">分析日期：2026-11-11 · 來源：northgo.com</span>
-      · <span data-version></span>
       · <a id="site-home" href="https://www.northgo.com/" target="_blank" rel="noopener" data-i18n="backHome">返回官網</a>
     </div>
   </footer>
@@ -769,15 +768,6 @@
 
     const initial = new URLSearchParams(location.search).get("lang") || "zh-tw";
     setLang(initial);
-
-    fetch("BUMP")
-      .then((r) => r.text())
-      .then((v) => {
-        document.querySelectorAll("[data-version]").forEach((el) => {
-          el.textContent = "v" + v.trim();
-        });
-      })
-      .catch(() => {});
   </script>
 </body>
 </html>

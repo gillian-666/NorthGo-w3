@@ -246,18 +246,8 @@
   </section>
 
   <footer>
-    <span data-version></span> ·
+    bump 20261112.1 ·
     <a href="https://github.com/gillian-666/NorthGo-w3" target="_blank" rel="noopener">GitHub repo</a>
   </footer>
-  <script>
-    fetch("BUMP")
-      .then((r) => r.text())
-      .then((v) => {
-        document.querySelectorAll("[data-version]").forEach((el) => {
-          el.textContent = "v" + v.trim();
-        });
-      })
-      .catch(() => {});
-  </script>
 </body>
 </html>

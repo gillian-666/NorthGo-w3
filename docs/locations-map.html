@@ -355,7 +355,6 @@
       資料來源：
       <a href="https://www.northgo.com/zh-tw/contact" target="_blank" rel="noopener">northgo.com/zh-tw/contact</a>
       · 地圖圖磚：© Esri
-      · <span data-version></span>
     </footer>
   </div>
 
@@ -581,15 +580,6 @@
 
     applyRegion("all");
     setTimeout(() => map.invalidateSize(), 80);
-
-    fetch("BUMP")
-      .then((r) => r.text())
-      .then((v) => {
-        document.querySelectorAll("[data-version]").forEach((el) => {
-          el.textContent = "v" + v.trim();
-        });
-      })
-      .catch(() => {});
   </script>
 </body>
 </html>

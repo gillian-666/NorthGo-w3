@@ -66,17 +66,7 @@
       <li><a href="sitemap-tree.html">樹狀網站地圖</a></li>
       <li><a href="locations-map.html">全球據點地圖</a></li>
     </ul>
-    <p class="bump" data-version></p>
+    <p class="bump">bump 20261112.1</p>
   </main>
-  <script>
-    fetch("BUMP")
-      .then((r) => r.text())
-      .then((v) => {
-        document.querySelectorAll("[data-version]").forEach((el) => {
-          el.textContent = "v" + v.trim();
-        });
-      })
-      .catch(() => {});
-  </script>
 </body>
 </html>
