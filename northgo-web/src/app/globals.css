@@ -91,16 +91,16 @@ a {
 }
 
 .hero-pattern {
-  --hero-globe-image: url("/brand/globe-light-ocean.jpg");
+  /* Image URL comes from body --hero-globe-image (includes basePath on GitHub Pages). */
   background:
     linear-gradient(
       115deg,
-      rgba(4, 24, 47, 0.92) 0%,
-      rgba(6, 36, 69, 0.78) 42%,
-      rgba(6, 36, 69, 0.35) 100%
+      rgba(4, 24, 47, 0.82) 0%,
+      rgba(6, 36, 69, 0.58) 45%,
+      rgba(6, 36, 69, 0.28) 100%
     ),
     radial-gradient(900px 420px at 85% 10%, rgba(42, 212, 232, 0.16), transparent 50%),
-    var(--hero-globe-image) right center / cover no-repeat,
+    var(--hero-globe-image, url("/brand/globe-light-ocean.jpg")) right center / cover no-repeat,
     linear-gradient(165deg, var(--navy-deep) 0%, var(--navy) 48%, var(--navy-mid) 100%);
 }
 
