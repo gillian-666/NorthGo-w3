@@ -27,7 +27,7 @@ export default async function HomePage({ params }: Props) {
     <>
       <section
         className="hero-pattern relative overflow-hidden text-white"
-        aria-label="Earth globe background"
+        aria-label="World map background"
       >
         <div className="relative mx-auto flex w-[min(1180px,calc(100%-2rem))] min-h-[70vh] flex-col justify-end py-20 lg:min-h-[78vh] lg:py-28">
           <div className="max-w-2xl">
