@@ -37,11 +37,30 @@ Open [http://localhost:3000](http://localhost:3000).
 
 > Admin, API routes, and Studio require a Node host (local / Vercel). They are excluded from the GitHub Pages static export.
 
+## Cloudflare (Workers + D1)
+
+Enquiry storage uses Cloudflare D1 when the Worker binding `DB` is present; local `next dev` falls back to `data/enquiries.json` if D1 is unavailable.
+
+```bash
+npx wrangler login
+npx wrangler d1 create northgo-enquiries
+# paste database_id into wrangler.jsonc
+npm run db:migrate:remote
+npm run deploy
+```
+
+| Command | Purpose |
+|---------|---------|
+| `npm run db:migrate:local` | Apply SQL migrations to local D1 |
+| `npm run db:migrate:remote` | Apply SQL migrations to remote D1 |
+| `npm run preview` | OpenNext build + local Workers preview |
+| `npm run deploy` | OpenNext build + deploy to Cloudflare Workers |
+
 ## Launch checklist
 
 1. Set `NEXT_PUBLIC_SITE_URL`, Resend keys, and Sanity project IDs.
-2. Deploy to Vercel; verify `/sitemap.xml` and `/robots.txt`.
-3. Point DNS from Webflow to Vercel; keep `vercel.json` 301s for legacy legal paths.
+2. Deploy to Cloudflare Workers (`npm run deploy`) or Vercel; verify `/sitemap.xml` and `/robots.txt`.
+3. Point DNS from Webflow to the chosen host; keep `vercel.json` 301s for legacy legal paths.
 4. Submit sitemap in Google Search Console; add `NEXT_PUBLIC_GA_ID` if needed.
 5. Hide social links until real URLs exist (already omitted).
 
