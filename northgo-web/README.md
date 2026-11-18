@@ -26,6 +26,16 @@ Open [http://localhost:3000](http://localhost:3000).
 - UI chrome: `messages/*.json`
 - Page copy / services / legal / offices: `src/content/*` (works offline without Sanity)
 - CMS schemas: `sanity/schemas/*` — connect via `.env.local` then open `/studio`
+- Admin console: `/admin/login` (set `ADMIN_USERNAME`, `ADMIN_PASSWORD`, `ADMIN_SESSION_SECRET`)
+
+## Admin
+
+1. Copy `.env.example` → `.env.local` and set the three `ADMIN_*` values.
+2. Run `npm run dev` and open [http://localhost:3000/admin/login](http://localhost:3000/admin/login).
+3. Use **詢問管理** (`/admin/enquiries`) to filter, edit, annotate, change status, or delete front-end contact submissions.
+4. Open `/studio` for Sanity CMS when configured.
+
+> Admin, API routes, and Studio require a Node host (local / Vercel). They are excluded from the GitHub Pages static export.
 
 ## Launch checklist
 

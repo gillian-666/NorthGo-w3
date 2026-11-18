@@ -1,11 +1,11 @@
 /**
- * Reference enquire handler for Node hosts (Vercel etc.).
- * GitHub Pages uses static export, so this is not mounted as a Route Handler.
- * Restore under `src/app/api/enquire/route.ts` when deploying to a Node runtime.
+ * Enquiry handler for Node hosts (local / Vercel).
+ * Always persists to the admin enquiry store; email delivery is best-effort.
  */
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { Resend } from "resend";
+import { addEnquiry } from "@/lib/enquiries";
 
 const schema = z.object({
   name: z.string().min(1).max(120),
@@ -35,32 +35,49 @@ export async function handleEnquirePost(request: Request) {
   const from =
     process.env.ENQUIRE_FROM_EMAIL ?? "Northgo Website <onboarding@resend.dev>";
 
-  if (!process.env.RESEND_API_KEY) {
+  let delivery: "email" | "log" = "log";
+
+  if (process.env.RESEND_API_KEY) {
+    try {
+      const resend = new Resend(process.env.RESEND_API_KEY);
+      await resend.emails.send({
+        from,
+        to: [to],
+        replyTo: data.email,
+        subject: `Northgo enquiry from ${data.name} (${data.company})`,
+        text: [
+          `Name: ${data.name}`,
+          `Company: ${data.company}`,
+          `Email: ${data.email}`,
+          `Phone: ${data.phone || "-"}`,
+          `Service: ${data.service || "-"}`,
+          `Trade lane: ${data.tradeLane || "-"}`,
+          "",
+          data.message,
+        ].join("\n"),
+      });
+      delivery = "email";
+    } catch (error) {
+      console.error("[enquire] email failed; still saving enquiry", error);
+    }
+  } else {
     console.info("[enquire] captured (no RESEND_API_KEY)", data);
-    return NextResponse.json({ ok: true, mode: "log" });
   }
 
   try {
-    const resend = new Resend(process.env.RESEND_API_KEY);
-    await resend.emails.send({
-      from,
-      to: [to],
-      replyTo: data.email,
-      subject: `Northgo enquiry from ${data.name} (${data.company})`,
-      text: [
-        `Name: ${data.name}`,
-        `Company: ${data.company}`,
-        `Email: ${data.email}`,
-        `Phone: ${data.phone || "-"}`,
-        `Service: ${data.service || "-"}`,
-        `Trade lane: ${data.tradeLane || "-"}`,
-        "",
-        data.message,
-      ].join("\n"),
+    const record = await addEnquiry({
+      name: data.name,
+      company: data.company,
+      email: data.email,
+      phone: data.phone || undefined,
+      service: data.service || undefined,
+      tradeLane: data.tradeLane || undefined,
+      message: data.message,
+      delivery,
     });
-    return NextResponse.json({ ok: true, mode: "email" });
+    return NextResponse.json({ ok: true, mode: delivery, id: record.id });
   } catch (error) {
-    console.error("[enquire] email failed", error);
-    return NextResponse.json({ error: "Send failed" }, { status: 500 });
+    console.error("[enquire] persist failed", error);
+    return NextResponse.json({ error: "Save failed" }, { status: 500 });
   }
 }

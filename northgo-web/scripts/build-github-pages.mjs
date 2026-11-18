@@ -1,10 +1,46 @@
-import { writeFile, copyFile } from "node:fs/promises";
-import { existsSync } from "node:fs";
+import { rename, writeFile, copyFile, access } from "node:fs/promises";
+import { constants, existsSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+
+/** Routes that require a Node server — skip for static GitHub Pages export. */
+const moves = [
+  ["src/app/api", "src/app/_api_skip"],
+  ["src/app/admin", "src/app/_admin_skip"],
+  ["src/app/studio", "src/app/_studio_skip"],
+];
+
+async function exists(p) {
+  try {
+    await access(p, constants.F_OK);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+async function movePair(fromRel, toRel, restore = false) {
+  const from = path.join(root, restore ? toRel : fromRel);
+  const to = path.join(root, restore ? fromRel : toRel);
+  if (await exists(from)) {
+    await rename(from, to);
+  }
+}
+
+async function stash() {
+  for (const [from, to] of moves) {
+    await movePair(from, to, false);
+  }
+}
+
+async function restore() {
+  for (const [from, to] of moves) {
+    await movePair(from, to, true);
+  }
+}
 
 const env = {
   ...process.env,
@@ -14,15 +50,22 @@ const env = {
   NEXT_PUBLIC_SITE_URL: "https://gillian-666.github.io/NorthGo-w3",
 };
 
-const result = spawnSync("npx", ["next", "build"], {
-  cwd: root,
-  env,
-  stdio: "inherit",
-  shell: true,
-});
+let exitCode = 0;
+try {
+  await stash();
+  const result = spawnSync("npx", ["next", "build"], {
+    cwd: root,
+    env,
+    stdio: "inherit",
+    shell: true,
+  });
+  exitCode = result.status ?? 1;
+} finally {
+  await restore();
+}
 
-if (result.status !== 0) {
-  process.exit(result.status ?? 1);
+if (exitCode !== 0) {
+  process.exit(exitCode);
 }
 
 const outDir = path.join(root, "out");

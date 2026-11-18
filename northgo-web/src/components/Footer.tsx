@@ -2,12 +2,14 @@ import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { serviceSlugs } from "@/lib/site";
 import { assetPath } from "@/lib/paths";
+import { getAppVersion } from "@/lib/version";
 
 export async function Footer() {
   const t = await getTranslations("footer");
   const tn = await getTranslations("nav");
   const ts = await getTranslations("services");
   const year = new Date().getFullYear();
+  const version = getAppVersion();
 
   return (
     <footer className="mt-auto border-t border-white/10 bg-[color:var(--navy-deep)] text-white">
@@ -98,6 +100,10 @@ export async function Footer() {
       </div>
       <div className="border-t border-white/10 py-4 text-center text-xs text-white/45">
         {t("rights", { year })}
+        <span className="mx-2 text-white/25" aria-hidden>
+          ·
+        </span>
+        <span title="App version">v{version}</span>
       </div>
     </footer>
   );
