@@ -113,6 +113,58 @@ a {
   pointer-events: none;
 }
 
+.hero-freight {
+  background:
+    linear-gradient(
+      105deg,
+      rgba(4, 24, 47, 0.88) 0%,
+      rgba(6, 36, 69, 0.62) 42%,
+      rgba(6, 36, 69, 0.28) 72%,
+      rgba(6, 36, 69, 0.18) 100%
+    ),
+    var(--hero-freight-image) center / cover no-repeat,
+    linear-gradient(165deg, var(--navy-deep) 0%, var(--navy) 48%, var(--navy-mid) 100%);
+}
+
+.hero-freight::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(4, 24, 47, 0.45) 0%,
+    transparent 42%
+  );
+  pointer-events: none;
+}
+
+.hero-freight-copy > * {
+  animation: hero-freight-rise 0.9s ease-out both;
+}
+
+.hero-freight-copy > *:nth-child(2) {
+  animation-delay: 0.12s;
+}
+
+.hero-freight-copy > *:nth-child(3) {
+  animation-delay: 0.24s;
+}
+
+.hero-freight-copy > *:nth-child(4) {
+  animation-delay: 0.36s;
+}
+
+@keyframes hero-freight-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .leaflet-container {
   font: inherit;
   background: #0a1c30;
