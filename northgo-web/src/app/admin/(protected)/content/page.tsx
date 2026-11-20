@@ -12,12 +12,17 @@ export default function AdminContentPage() {
 
   return (
     <div>
-      <h1 className="font-display text-2xl font-bold text-[color:var(--navy)] sm:text-3xl">
-        網站內容
-      </h1>
-      <p className="mt-2 max-w-2xl text-sm text-[color:var(--muted-ink)]">
-        目前網站由本機 TypeScript 內容驅動。連上 Sanity 後可在 Studio 編輯相同結構，無需重新部署文案檔。
-      </p>
+      <div className="mb-8">
+        <p className="text-xs font-semibold tracking-[0.18em] text-[color:var(--navy-mid)] uppercase">
+          Content
+        </p>
+        <h1 className="mt-1 font-display text-2xl font-bold text-[color:var(--navy)] sm:text-3xl">
+          網站內容
+        </h1>
+        <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[color:var(--muted-ink)]">
+          目前網站由本機 TypeScript 內容驅動。連上 Sanity 後可在 Studio 編輯相同結構，無需重新部署文案檔。
+        </p>
+      </div>
 
       <div className="mt-8 rounded-2xl border border-[color:var(--navy)]/8 bg-white p-6 shadow-[0_10px_30px_rgba(6,36,69,0.05)]">
         <h2 className="font-display text-xl font-semibold text-[color:var(--navy)]">
@@ -30,7 +35,7 @@ export default function AdminContentPage() {
         </p>
         <Link
           href="/studio"
-          className="mt-4 inline-flex rounded-full bg-[color:var(--navy-mid)] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[color:var(--navy)]"
+          className="mt-4 inline-flex rounded-full bg-cyan px-5 py-2.5 text-sm font-bold text-[color:var(--navy-deep)] transition hover:brightness-110"
         >
           開啟 Studio
         </Link>
@@ -40,9 +45,16 @@ export default function AdminContentPage() {
         <h2 className="font-display text-xl font-semibold text-[color:var(--navy)]">
           語系
         </h2>
-        <p className="mt-2 text-sm text-[color:var(--muted-ink)]">
-          {locales.join(" · ")}
-        </p>
+        <div className="mt-3 flex flex-wrap gap-2">
+          {locales.map((locale) => (
+            <span
+              key={locale}
+              className="rounded-full bg-[color:var(--surface-soft)] px-3 py-1 text-sm font-medium text-[color:var(--navy)] ring-1 ring-[color:var(--navy)]/10"
+            >
+              {locale}
+            </span>
+          ))}
+        </div>
       </section>
 
       <section className="mt-8">
@@ -53,7 +65,7 @@ export default function AdminContentPage() {
           {services.map((service) => (
             <li
               key={service.slug}
-              className="rounded-2xl border border-[color:var(--navy)]/8 bg-white p-4 shadow-[0_8px_24px_rgba(6,36,69,0.04)]"
+              className="rounded-2xl border border-[color:var(--navy)]/8 bg-white p-5 shadow-[0_8px_24px_rgba(6,36,69,0.04)] transition hover:border-cyan/40 hover:shadow-[0_14px_30px_rgba(6,36,69,0.08)]"
             >
               <p className="font-medium text-[color:var(--navy)]">{service.title}</p>
               <p className="mt-1 text-sm text-[color:var(--muted-ink)]">

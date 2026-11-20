@@ -46,7 +46,7 @@ const btnSecondary =
   "rounded-full border border-[color:var(--navy)]/12 bg-white px-4 py-2 text-sm font-medium text-[color:var(--navy)]/80 transition hover:border-[color:var(--navy)]/30 hover:text-[color:var(--navy)] disabled:opacity-50";
 
 const btnPrimary =
-  "rounded-full bg-[color:var(--navy-mid)] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[color:var(--navy)] disabled:opacity-50";
+  "rounded-full border border-[color:var(--navy)]/15 bg-white px-4 py-2 text-sm font-semibold text-[color:var(--navy)] transition hover:border-[color:var(--navy)]/35 disabled:opacity-50";
 
 function formatDateTime(value: string) {
   const date = new Date(value);
@@ -83,9 +83,10 @@ function compareValues(a: EnquiryRecord, b: EnquiryRecord, key: SortKey) {
 type Props = {
   initialItems: EnquiryRecord[];
   counts: Record<EnquiryStatus, number>;
+  notifyEmail?: string;
 };
 
-export function AdminEnquiryManager({ initialItems }: Props) {
+export function AdminEnquiryManager({ initialItems, notifyEmail }: Props) {
   const router = useRouter();
   const [items, setItems] = useState(initialItems);
   const [filter, setFilter] = useState<EnquiryStatus | "all">("all");
@@ -100,6 +101,7 @@ export function AdminEnquiryManager({ initialItems }: Props) {
   const [busyId, setBusyId] = useState<string | null>(null);
   const [creating, setCreating] = useState(false);
   const [reloading, setReloading] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
 
   useEffect(() => {
     setItems(initialItems);
@@ -274,7 +276,7 @@ export function AdminEnquiryManager({ initialItems }: Props) {
               onClick={() => setFilter(key)}
               className={`rounded-full px-3.5 py-1.5 text-xs font-semibold tracking-wide transition ${
                 active
-                  ? "bg-[color:var(--navy)] text-white"
+                  ? "bg-cyan/25 text-[color:var(--navy)] ring-1 ring-cyan shadow-sm"
                   : "bg-white text-[color:var(--muted-ink)] ring-1 ring-[color:var(--navy)]/10 hover:text-[color:var(--navy)]"
               }`}
             >
@@ -334,6 +336,13 @@ export function AdminEnquiryManager({ initialItems }: Props) {
           <div className="flex flex-wrap items-center gap-2">
             <button
               type="button"
+              onClick={() => setShowSettings((open) => !open)}
+              className={btnSecondary}
+            >
+              設定
+            </button>
+            <button
+              type="button"
               onClick={reload}
               disabled={reloading}
               className={btnSecondary}
@@ -343,12 +352,18 @@ export function AdminEnquiryManager({ initialItems }: Props) {
             <button
               type="button"
               onClick={() => setShowCreate((v) => !v)}
-              className={btnPrimary}
+              className="rounded-full bg-cyan px-4 py-2 text-sm font-bold text-[color:var(--navy-deep)] transition hover:brightness-110 disabled:opacity-50"
             >
               {showCreate ? "關閉新增" : "新增詢問"}
             </button>
           </div>
         </div>
+
+        {showSettings ? (
+          <div className="mt-4 rounded-xl border border-[color:var(--navy)]/10 bg-[color:var(--surface-soft)] px-4 py-3 text-sm text-[color:var(--navy)]">
+            詢問通知信箱：{notifyEmail || "未設定，表單只會寫入後台紀錄"}
+          </div>
+        ) : null}
 
         {showCreate ? (
           <form
@@ -385,7 +400,7 @@ export function AdminEnquiryManager({ initialItems }: Props) {
 
         <div className="mt-5 overflow-x-auto rounded-xl border border-[color:var(--navy)]/8">
           <table className="min-w-full border-collapse text-left text-sm">
-            <thead className="bg-[color:var(--surface-soft)] text-xs tracking-wide text-[color:var(--muted-ink)] uppercase">
+            <thead className="bg-[linear-gradient(180deg,#f4fafc_0%,#eef4f8_100%)] text-xs tracking-wide text-[color:var(--muted-ink)] uppercase">
               <tr>
                 {(
                   [

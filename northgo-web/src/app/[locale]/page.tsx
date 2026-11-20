@@ -154,7 +154,7 @@ export default async function HomePage({ params }: Props) {
           <p className="mt-4 text-[color:var(--muted-ink)]">{t("partnerBody")}</p>
           <Link
             href="/contact#enquiry"
-            className="mt-8 inline-flex rounded-full bg-[color:var(--navy)] px-6 py-3 text-sm font-bold text-white hover:bg-[color:var(--navy-mid)]"
+            className="mt-8 inline-flex rounded-full bg-cyan px-6 py-3 text-sm font-bold text-[color:var(--navy-deep)] transition hover:brightness-110"
           >
             {t("partnerCta")}
           </Link>

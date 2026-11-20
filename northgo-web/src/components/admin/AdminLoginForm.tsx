@@ -28,13 +28,13 @@ export function AdminLoginForm({ configured }: { configured: boolean }) {
       });
       const json = (await res.json().catch(() => ({}))) as { error?: string };
       if (!res.ok) {
-        setError(json.error || "Sign-in failed");
+        setError(json.error || "登入失敗");
         return;
       }
       router.replace("/admin");
       router.refresh();
     } catch {
-      setError("Network error. Please try again.");
+      setError("網路錯誤，請再試一次。");
     } finally {
       setPending(false);
     }
@@ -43,9 +43,7 @@ export function AdminLoginForm({ configured }: { configured: boolean }) {
   return (
     <form onSubmit={onSubmit} className="mt-8 space-y-5">
       <label className="block">
-        <span className="mb-2 block text-sm font-medium text-white/75">
-          Username
-        </span>
+        <span className="mb-2 block text-sm font-medium text-white/75">帳號</span>
         <input
           name="username"
           autoComplete="username"
@@ -55,9 +53,7 @@ export function AdminLoginForm({ configured }: { configured: boolean }) {
         />
       </label>
       <label className="block">
-        <span className="mb-2 block text-sm font-medium text-white/75">
-          Password
-        </span>
+        <span className="mb-2 block text-sm font-medium text-white/75">密碼</span>
         <input
           name="password"
           type="password"
@@ -76,9 +72,9 @@ export function AdminLoginForm({ configured }: { configured: boolean }) {
 
       {!configured ? (
         <p className="rounded-xl border border-warn/30 bg-warn/10 px-4 py-3 text-sm text-warn">
-          Set <code>ADMIN_USERNAME</code>, <code>ADMIN_PASSWORD</code>, and{" "}
-          <code>ADMIN_SESSION_SECRET</code> in <code>.env.local</code> before
-          signing in.
+          請先在 <code>.env.local</code> 設定{" "}
+          <code>ADMIN_SESSION_SECRET</code>，以及初始{" "}
+          <code>ADMIN_USERNAME</code> / <code>ADMIN_PASSWORD</code>。
         </p>
       ) : null}
 
@@ -87,7 +83,7 @@ export function AdminLoginForm({ configured }: { configured: boolean }) {
         disabled={!configured || pending}
         className="w-full rounded-full bg-cyan px-6 py-3 text-sm font-bold text-[color:var(--navy-deep)] transition hover:brightness-110 disabled:opacity-50"
       >
-        {pending ? "Signing in…" : "Sign in"}
+        {pending ? "登入中…" : "登入"}
       </button>
     </form>
   );

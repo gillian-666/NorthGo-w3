@@ -1,11 +1,22 @@
 import { createHmac, timingSafeEqual } from "node:crypto";
 import { cookies } from "next/headers";
+import {
+  ensureBootstrapOwner,
+  getAdminUserByUsername,
+  touchAdminUserLogin,
+  verifyPassword,
+  type AdminRole,
+  type AdminUserPublic,
+  toPublicUser,
+} from "@/lib/admin-users";
 
 export const ADMIN_COOKIE = "northgo_admin_session";
 const SESSION_TTL_MS = 1000 * 60 * 60 * 12; // 12 hours
 
-type SessionPayload = {
+export type AdminSession = {
   u: string;
+  id?: string;
+  role?: AdminRole;
   exp: number;
 };
 
@@ -14,25 +25,21 @@ function getSecret() {
 }
 
 export function isAdminAuthConfigured() {
-  return Boolean(
-    process.env.ADMIN_USERNAME?.trim() &&
-      process.env.ADMIN_PASSWORD?.trim() &&
-      getSecret(),
-  );
+  return Boolean(getSecret());
 }
 
 function sign(value: string) {
   return createHmac("sha256", getSecret()).update(value).digest("base64url");
 }
 
-function encodeSession(payload: SessionPayload) {
+function encodeSession(payload: AdminSession) {
   const body = Buffer.from(JSON.stringify(payload), "utf8").toString(
     "base64url",
   );
   return `${body}.${sign(body)}`;
 }
 
-function decodeSession(token: string): SessionPayload | null {
+function decodeSession(token: string): AdminSession | null {
   const [body, signature] = token.split(".");
   if (!body || !signature || !getSecret()) return null;
 
@@ -44,7 +51,7 @@ function decodeSession(token: string): SessionPayload | null {
   try {
     const payload = JSON.parse(
       Buffer.from(body, "base64url").toString("utf8"),
-    ) as SessionPayload;
+    ) as AdminSession;
     if (!payload?.u || typeof payload.exp !== "number") return null;
     if (Date.now() > payload.exp) return null;
     return payload;
@@ -60,16 +67,49 @@ function safeEqual(a: string, b: string) {
   return timingSafeEqual(left, right);
 }
 
-export function verifyAdminCredentials(username: string, password: string) {
+export type VerifiedAdmin = {
+  username: string;
+  user: AdminUserPublic | null;
+};
+
+export async function verifyAdminCredentials(
+  username: string,
+  password: string,
+): Promise<VerifiedAdmin | null> {
+  if (!getSecret()) return null;
+
+  await ensureBootstrapOwner();
+
+  const user = await getAdminUserByUsername(username);
+  if (user) {
+    if (user.status !== "active") return null;
+    if (!verifyPassword(password, user.passwordHash)) return null;
+    await touchAdminUserLogin(user.id);
+    return { username: user.username, user: toPublicUser(user) };
+  }
+
+  // Fallback for first-run / empty DB before bootstrap seed lands.
   const expectedUser = process.env.ADMIN_USERNAME?.trim() ?? "";
   const expectedPass = process.env.ADMIN_PASSWORD?.trim() ?? "";
-  if (!expectedUser || !expectedPass || !getSecret()) return false;
-  return safeEqual(username, expectedUser) && safeEqual(password, expectedPass);
+  if (!expectedUser || !expectedPass) return null;
+  if (
+    !safeEqual(username.trim().toLowerCase(), expectedUser.toLowerCase()) ||
+    !safeEqual(password, expectedPass)
+  ) {
+    return null;
+  }
+
+  return { username: expectedUser.toLowerCase(), user: null };
 }
 
-export function createAdminSessionToken(username: string) {
+export function createAdminSessionToken(
+  username: string,
+  extras?: { id?: string; role?: AdminRole },
+) {
   return encodeSession({
     u: username,
+    id: extras?.id,
+    role: extras?.role,
     exp: Date.now() + SESSION_TTL_MS,
   });
 }
