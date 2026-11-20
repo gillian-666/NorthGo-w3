@@ -1,6 +1,18 @@
+import { readFileSync } from "node:fs";
+import path from "node:path";
 import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
+
+function readBump() {
+  try {
+    return readFileSync(path.join(process.cwd(), "BUMP"), "utf8").trim();
+  } catch {
+    return "";
+  }
+}
+
+const appVersion = process.env.NEXT_PUBLIC_APP_VERSION?.trim() || readBump();
 
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
@@ -8,6 +20,9 @@ const isGithubPages = process.env.GITHUB_PAGES === "1";
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 const nextConfig: NextConfig = {
+  env: {
+    NEXT_PUBLIC_APP_VERSION: appVersion,
+  },
   ...(isGithubPages
     ? {
         output: "export" as const,
